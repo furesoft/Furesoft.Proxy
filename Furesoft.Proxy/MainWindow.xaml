@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Furesoft.Proxy"
         mc:Ignorable="d"
         Title="Furesoft.Proxy Administration Panel" Height="450" Width="800">
-    <Grid>
+    <Frame Source="/Pages/LoginPage.xaml">
 
-    </Grid>
+    </Frame>
 </Window>
