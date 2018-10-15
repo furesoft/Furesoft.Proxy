@@ -10,6 +10,7 @@ namespace Furesoft.Proxy
         protected override void OnStartup(StartupEventArgs e)
         {
             ServiceLocator.Provider.AddService<IWService>(new WService());
+            NotificationManager.Init();
             
             base.OnStartup(e);
         }

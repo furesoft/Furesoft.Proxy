@@ -3,6 +3,7 @@ using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Services.Interfaces;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace Furesoft.Proxy.ViewModels
 {
@@ -30,7 +31,7 @@ namespace Furesoft.Proxy.ViewModels
                     wservice.Stop();
                 }
 
-                MessageBox.Show("Logged IN!" + PasswordHash);
+                NotificationManager.notifier.ShowSuccess("Logged in: " + PasswordHash);
             });
         }
     }

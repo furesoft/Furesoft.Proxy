@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Furesoft.Proxy"
+        xmlns:wpf="http://github.com/scheshan/bootstrap"
         mc:Ignorable="d"
         Title="Furesoft.Proxy Administration Panel" Height="450" Width="800">
-    <Frame Source="/Pages/LoginPage.xaml">
+    <Frame Source="/Pages/LoginPage.xaml" NavigationUIVisibility="Hidden">
 
     </Frame>
 </Window>

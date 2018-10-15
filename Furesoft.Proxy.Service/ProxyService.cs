@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.ServiceProcess;
 using System.Threading.Tasks;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
@@ -8,7 +7,7 @@ using Titanium.Web.Proxy.Models;
 
 namespace Furesoft.Proxy.Service
 {
-    public partial class ProxyService : ServiceBase
+    public partial class ProxyService
     {
         private ProxyServer proxyServer;
 
@@ -17,7 +16,7 @@ namespace Furesoft.Proxy.Service
             
         }
 
-        protected override void OnStart(string[] args)
+        public void Start()
         {
             proxyServer = new ProxyServer();
 
@@ -47,7 +46,7 @@ namespace Furesoft.Proxy.Service
             proxyServer.SetAsSystemHttpsProxy(explicitEndPoint);
         }
 
-        protected override void OnStop()
+        public void Stop()
         {
             proxyServer.BeforeRequest -= OnRequest;
             proxyServer.BeforeResponse -= OnResponse;
