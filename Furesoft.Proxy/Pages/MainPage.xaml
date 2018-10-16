@@ -10,6 +10,32 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <material:RatingBar />
+        <material:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <material:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="212">
+                    <ToggleButton
+                        Margin="16"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Top"
+                        IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
+                        Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+                    <Button Content="hello world" />
+                </DockPanel>
+            </material:DrawerHost.LeftDrawerContent>
+
+            <DockPanel>
+                <ToggleButton
+                    x:Name="MenuToggleButton"
+                    DockPanel.Dock="Top"
+                    IsChecked="False"
+                    Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+                <ListView>
+                    <ListViewItem>hello world</ListViewItem>
+                </ListView>
+            </DockPanel>
+        </material:DrawerHost>
+
     </Grid>
 </UserControl>

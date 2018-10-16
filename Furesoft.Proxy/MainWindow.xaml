@@ -29,21 +29,53 @@
         <material:Card Margin="16" Padding="32">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="572*" />
                     <ColumnDefinition Width="30*" />
                 </Grid.ColumnDefinitions>
+
+                <!--  ToDo: Repair!!  -->
+                <material:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                    <material:DrawerHost.LeftDrawerContent>
+                        <DockPanel MinWidth="212">
+                            <ToggleButton
+                                Margin="16"
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Top"
+                                IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
+                                Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+                            <Button Content="hello world" />
+                        </DockPanel>
+                    </material:DrawerHost.LeftDrawerContent>
+
+                    <DockPanel>
+                        <ToggleButton
+                            x:Name="MenuToggleButton"
+                            Grid.Column="0"
+                            IsChecked="False"
+                            Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                        <ListView>
+                            <ListViewItem>hello world</ListViewItem>
+                        </ListView>
+                    </DockPanel>
+                </material:DrawerHost>
+
                 <TextBlock
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Margin="0,0,-0.4,-0.6"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                     Style="{StaticResource MaterialDesignTitleTextBlock}"
                     Text="Furesoft Internet Filter Admin Panel" />
 
-                <material:PopupBox Grid.Column="1" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
+                <material:PopupBox Grid.Column="2" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
                     <ListView>
                         <Button Command="{Binding LogoutCommand}">Abmelden</Button>
                     </ListView>
                 </material:PopupBox>
+
             </Grid>
         </material:Card>
 
