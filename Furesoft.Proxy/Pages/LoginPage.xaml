@@ -1,4 +1,4 @@
-﻿<Page
+﻿<UserControl
     x:Class="Furesoft.Proxy.Pages.LoginPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,13 +7,12 @@
     xmlns:furesoft="http://furesoft.app/proxy"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:Furesoft.Proxy.ViewModels"
-    Title="LoginPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Page.DataContext>
+    <UserControl.DataContext>
         <views:LoginViewModel />
-    </Page.DataContext>
+    </UserControl.DataContext>
 
     <Grid Margin="100">
         <Grid.ColumnDefinitions>
@@ -61,4 +60,4 @@
             Content="Login"
             IsDefault="True" />
     </Grid>
-</Page>
+</UserControl>

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Furesoft.Proxy.ViewModels;
+using MaterialDesignThemes.Wpf.Transitions;
+using System.Windows;
 
 namespace Furesoft.Proxy
 {
@@ -8,5 +10,6 @@ namespace Furesoft.Proxy
         {
             InitializeComponent();
         }
+
     }
 }

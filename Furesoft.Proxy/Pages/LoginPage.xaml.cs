@@ -5,7 +5,7 @@ using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Pages
 {
-    public partial class LoginPage : Page
+    public partial class LoginPage
     {
         public LoginPage()
         {

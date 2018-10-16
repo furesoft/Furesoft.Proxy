@@ -6,7 +6,9 @@
     xmlns:local="clr-namespace:Furesoft.Proxy"
     xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Furesoft.Proxy.Pages"
     xmlns:ui="clr-namespace:Furesoft.Proxy.UI;assembly=Furesoft.Proxy.UI"
+    xmlns:views="clr-namespace:Furesoft.Proxy.ViewModels"
     Title="Furesoft.Proxy Administration Panel"
     Width="800"
     Height="450"
@@ -19,6 +21,10 @@
     TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <views:MainViewModel />
+    </Window.DataContext>
+
     <StackPanel>
         <material:Card Margin="16" Padding="32">
             <Grid>
@@ -33,9 +39,9 @@
                     Style="{StaticResource MaterialDesignTitleTextBlock}"
                     Text="Furesoft Internet Filter Admin Panel" />
 
-                <material:PopupBox Grid.Column="1" Visibility="{Binding IsLoggedIn, ElementName={StaticResource local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
+                <material:PopupBox Grid.Column="1" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
                     <ListView>
-                        <ListViewItem>Abmelden</ListViewItem>
+                        <Button Command="{Binding LogoutCommand}">Abmelden</Button>
                     </ListView>
                 </material:PopupBox>
             </Grid>
@@ -43,6 +49,9 @@
 
 
 
-        <Frame NavigationUIVisibility="Hidden" Source="/Pages/LoginPage.xaml" />
+        <material:Transitioner SelectedIndex="{Binding PageIndex}">
+            <pages:LoginPage />
+            <pages:MainPage />
+        </material:Transitioner>
     </StackPanel>
 </Window>
