@@ -1,6 +1,5 @@
 ﻿using Furesoft.Proxy.Services;
 using Furesoft.Proxy.Services.Interfaces;
-using System.ServiceProcess;
 using System.Windows;
 
 namespace Furesoft.Proxy
@@ -9,7 +8,7 @@ namespace Furesoft.Proxy
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            ServiceLocator.Provider.AddService<IWService>(new WService());
+            ServiceLocator.Instance.Provider.AddService<IWService>(new WService());
             NotificationManager.Init();
             
             base.OnStartup(e);

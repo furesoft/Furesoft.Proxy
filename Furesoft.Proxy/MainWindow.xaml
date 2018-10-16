@@ -1,13 +1,48 @@
-﻿<Window x:Class="Furesoft.Proxy.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Furesoft.Proxy"
-        xmlns:wpf="http://github.com/scheshan/bootstrap"
-        mc:Ignorable="d"
-        Title="Furesoft.Proxy Administration Panel" Height="450" Width="800">
-    <Frame Source="/Pages/LoginPage.xaml" NavigationUIVisibility="Hidden">
+﻿<Window
+    x:Class="Furesoft.Proxy.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Furesoft.Proxy"
+    xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:Furesoft.Proxy.UI;assembly=Furesoft.Proxy.UI"
+    Title="Furesoft.Proxy Administration Panel"
+    Width="800"
+    Height="450"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    TextElement.FontSize="13"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <StackPanel>
+        <material:Card Margin="16" Padding="32">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="572*" />
+                    <ColumnDefinition Width="30*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,-0.4,-0.6"
+                    Style="{StaticResource MaterialDesignTitleTextBlock}"
+                    Text="Furesoft Internet Filter Admin Panel" />
 
-    </Frame>
+                <material:PopupBox Grid.Column="1" Visibility="{Binding IsLoggedIn, ElementName={StaticResource local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
+                    <ListView>
+                        <ListViewItem>Abmelden</ListViewItem>
+                    </ListView>
+                </material:PopupBox>
+            </Grid>
+        </material:Card>
+
+
+
+        <Frame NavigationUIVisibility="Hidden" Source="/Pages/LoginPage.xaml" />
+    </StackPanel>
 </Window>

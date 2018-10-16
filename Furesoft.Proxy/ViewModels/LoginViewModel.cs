@@ -25,11 +25,13 @@ namespace Furesoft.Proxy.ViewModels
         {
             LoginCommand = new RelayCommand((cp) =>
             {
-                var wservice = ServiceLocator.Provider.GetService<IWService>();
+                var wservice = ServiceLocator.Instance.Provider.GetService<IWService>();
                 if (wservice.IsRunning())
                 {
                     wservice.Stop();
                 }
+
+                ServiceLocator.Instance.IsLoggedIn = true;
 
                 NotificationManager.notifier.ShowSuccess("Logged in: " + PasswordHash);
             });

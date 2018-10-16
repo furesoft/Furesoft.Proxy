@@ -39,6 +39,12 @@
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
@@ -66,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="Services\DatabaseService.cs" />
@@ -129,6 +136,10 @@
     <ProjectReference Include="..\Furesoft.Proxy.Services.Interfaces\Furesoft.Proxy.Services.Interfaces.csproj">
       <Project>{5E3461A1-0E43-4C18-8022-875836106727}</Project>
       <Name>Furesoft.Proxy.Services.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Furesoft.Proxy.UI\Furesoft.Proxy.UI.csproj">
+      <Project>{0d45711e-16a9-45c2-b8b3-a4b62a041f4d}</Project>
+      <Name>Furesoft.Proxy.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
