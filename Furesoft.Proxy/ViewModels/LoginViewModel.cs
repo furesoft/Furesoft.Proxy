@@ -1,5 +1,6 @@
 ﻿using Furesoft.Proxy.Core;
 using Furesoft.Proxy.Models;
+using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.Services.Interfaces;
 using MaterialDesignThemes.Wpf.Transitions;
 using System.Windows;
@@ -34,7 +35,8 @@ namespace Furesoft.Proxy.ViewModels
 
                 ServiceLocator.Instance.IsLoggedIn = true;
                 // Move to next page
-                Transitioner.MoveNextCommand.Execute(null, null);
+                var container = ServiceLocator.Instance.PageContainer;
+                container.ShowPage(new MainPage());
 
                 NotificationManager.notifier.ShowSuccess("Logged in: " + PasswordHash);
             });

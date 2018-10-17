@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D45711E-16A9-45C2-B8B3-A4B62A041F4D}</ProjectGuid>
+    <ProjectGuid>{1B0643D1-0605-48C9-962A-5B75AB606397}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Furesoft.Proxy.UI</RootNamespace>
-    <AssemblyName>Furesoft.Proxy.UI</AssemblyName>
+    <RootNamespace>Furesoft.Proxy.Styles</RootNamespace>
+    <AssemblyName>Furesoft.Proxy.Styles</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -51,23 +45,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CenterConverter.cs" />
-    <Compile Include="HeightConverter.cs" />
-    <Compile Include="InvertConverter.cs" />
-    <Compile Include="PageTransition.xaml.cs">
-      <DependentUpon>PageTransition.xaml</DependentUpon>
+    <Compile Include="MenuItemStyle.xaml.cs">
+      <DependentUpon>MenuItemStyle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageTransitionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WidthConverter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="PageTransition.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="MenuItemStyle.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

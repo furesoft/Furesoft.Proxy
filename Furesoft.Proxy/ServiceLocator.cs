@@ -1,4 +1,5 @@
 ﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.UI;
 using System.ComponentModel;
 
 namespace Furesoft.Proxy
@@ -22,6 +23,8 @@ namespace Furesoft.Proxy
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLoggedIn)));
             }
         }
+
+        public PageTransition PageContainer = new PageTransition();
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
