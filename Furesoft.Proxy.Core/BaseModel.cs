@@ -1,4 +1,4 @@
-﻿namespace Furesoft.Proxy.Models
+﻿namespace Furesoft.Proxy.Core
 {
     public class BaseModel
     {

@@ -39,8 +39,8 @@
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
@@ -66,6 +66,10 @@
     <Reference Include="ToastNotifications.Messages, Version=2.5.0.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
       <HintPath>..\packages\ToastNotifications.Messages.2.5.0\lib\net40\ToastNotifications.Messages.dll</HintPath>
     </Reference>
+    <Reference Include="updateSystemDotNet.Controller, Version=1.5.2.515, Culture=neutral, PublicKeyToken=4b29b2d1691903dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\updateSystemDotNet.Controller.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -78,11 +82,6 @@
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\BlockTemplate.cs" />
-    <Compile Include="Models\Filter.cs" />
-    <Compile Include="Models\RedirectFilter.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Pages\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
@@ -170,6 +169,10 @@
     <ProjectReference Include="..\Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj">
       <Project>{04d5d52d-38f4-4ba3-9e62-6e0e577dfdf8}</Project>
       <Name>Furesoft.Proxy.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Furesoft.Proxy.Models\Furesoft.Proxy.Models.csproj">
+      <Project>{9f79b23f-0f02-4030-b80a-31d4307a9973}</Project>
+      <Name>Furesoft.Proxy.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Furesoft.Proxy.Services.Interfaces\Furesoft.Proxy.Services.Interfaces.csproj">
       <Project>{5E3461A1-0E43-4C18-8022-875836106727}</Project>

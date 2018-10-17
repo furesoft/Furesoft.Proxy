@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace WpfPageTransitions
+namespace Furesoft.Proxy.UI
 {
     public class WidthConverter : IValueConverter
     {

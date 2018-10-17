@@ -1,4 +1,6 @@
-﻿namespace Furesoft.Proxy.Models
+﻿using Furesoft.Proxy.Core;
+
+namespace Furesoft.Proxy.Models
 {
     public class RedirectFilter : BaseModel
     {
