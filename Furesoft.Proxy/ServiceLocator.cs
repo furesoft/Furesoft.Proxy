@@ -11,6 +11,7 @@ namespace Furesoft.Proxy
         public ServiceProvider Provider = new ServiceProvider();
 
         private bool _loggedIn;
+
         public bool IsLoggedIn
         {
             get

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Core.AttachedProperties
@@ -29,7 +28,6 @@ namespace Furesoft.Proxy.Core.AttachedProperties
             // Focus this control once loaded
             control.Loaded += (s, se) => control.Focus();
         }
-
     }
 
     /// <summary>

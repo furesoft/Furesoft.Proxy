@@ -1,6 +1,5 @@
 ﻿using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.ViewModels;
-using MaterialDesignThemes.Wpf.Transitions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -37,9 +36,11 @@ namespace Furesoft.Proxy
                 case "Filter":
                     container.ShowPage(new FilterPage());
                     break;
+
                 case "Redirects":
                     container.ShowPage(new RedirectPage());
                     break;
+
                 case "Settings":
                     container.ShowPage(new SettingsPage());
                     break;

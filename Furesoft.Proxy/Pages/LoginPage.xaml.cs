@@ -1,7 +1,6 @@
 ﻿using Furesoft.Proxy.Utils;
 using Furesoft.Proxy.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Pages
 {

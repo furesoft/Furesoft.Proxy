@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Markup;
@@ -13,9 +11,7 @@ using System.Windows.Markup;
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 [assembly: ComVisible(false)]
-
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //Speicherort der designspezifischen Ressourcenwörterbücher
                                      //(wird verwendet, wenn eine Ressource auf der Seite nicht gefunden wird,
@@ -24,10 +20,8 @@ using System.Windows.Markup;
                                               //(wird verwendet, wenn eine Ressource auf der Seite nicht gefunden wird,
                                               // designspezifischen Ressourcenwörterbuch nicht gefunden werden kann.)
 )]
-
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
 [assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy")]
 [assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy.Core")]
 [assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy.Core.AttachedProperties")]

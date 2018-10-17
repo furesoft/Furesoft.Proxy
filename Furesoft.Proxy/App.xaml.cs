@@ -10,7 +10,7 @@ namespace Furesoft.Proxy
         {
             ServiceLocator.Instance.Provider.AddService<IWService>(new WService());
             NotificationManager.Init();
-            
+
             base.OnStartup(e);
         }
     }

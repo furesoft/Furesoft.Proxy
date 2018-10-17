@@ -10,10 +10,10 @@ namespace Furesoft.Proxy.ViewModels
         public ICommand LogoutCommand { get; set; }
         public PageTransition TransitionContainer { get; set; }
 
-
         public MainViewModel()
         {
-            LogoutCommand = new RelayCommand((_) => {
+            LogoutCommand = new RelayCommand((_) =>
+            {
                 ServiceLocator.Instance.IsLoggedIn = false;
                 TransitionContainer.ShowPage(new LoginPage());
             });

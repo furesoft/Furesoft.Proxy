@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace Furesoft.Proxy.Service
 {
-    static class Program
+    internal static class Program
     {
-        static ProxyService proxy;
+        private static ProxyService proxy;
 
-        static void Main()
+        private static void Main()
         {
             handler = new ConsoleEventDelegate(ConsoleEventCallback);
             SetConsoleCtrlHandler(handler, true);
@@ -19,7 +19,7 @@ namespace Furesoft.Proxy.Service
             Console.ReadLine();
         }
 
-        static bool ConsoleEventCallback(int eventType)
+        private static bool ConsoleEventCallback(int eventType)
         {
             if (eventType == 2)
             {
@@ -31,12 +31,12 @@ namespace Furesoft.Proxy.Service
             return false;
         }
 
-        static ConsoleEventDelegate handler;   // Keeps it from getting garbage collected
+        private static ConsoleEventDelegate handler;   // Keeps it from getting garbage collected
 
         // Pinvoke
         private delegate bool ConsoleEventDelegate(int eventType);
+
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern bool SetConsoleCtrlHandler(ConsoleEventDelegate callback, bool add);
-
     }
 }

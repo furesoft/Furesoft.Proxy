@@ -1,9 +1,6 @@
 ﻿using Furesoft.Proxy.Core;
-using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.Services.Interfaces;
-using MaterialDesignThemes.Wpf.Transitions;
-using System.Windows;
 using System.Windows.Input;
 using ToastNotifications.Messages;
 
@@ -16,7 +13,7 @@ namespace Furesoft.Proxy.ViewModels
         public string Username
         {
             get { return _username; }
-            set { _username = value;OnPropertyChanged(); }
+            set { _username = value; OnPropertyChanged(); }
         }
 
         public string PasswordHash { get; set; }

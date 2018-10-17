@@ -13,7 +13,6 @@ namespace Furesoft.Proxy.Service
 
         public ProxyService()
         {
-            
         }
 
         public void Start()
@@ -29,7 +28,6 @@ namespace Furesoft.Proxy.Service
 
             var explicitEndPoint = new ExplicitProxyEndPoint(IPAddress.Any, 8000, true)
             {
-
             };
 
             proxyServer.AddEndPoint(explicitEndPoint);
@@ -127,7 +125,6 @@ namespace Furesoft.Proxy.Service
             {
                 var request = (Request)e.UserData;
             }
-
         }
 
         public static Task OnCertificateValidation(object sender, CertificateValidationEventArgs e)
@@ -144,6 +141,6 @@ namespace Furesoft.Proxy.Service
             return Task.FromResult(0);
         }
 
-        #endregion
+        #endregion "EventHandler"
     }
 }

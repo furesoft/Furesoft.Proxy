@@ -8,7 +8,7 @@ namespace Furesoft.Proxy.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(ServiceLocator.Instance.IsLoggedIn)
+            if (ServiceLocator.Instance.IsLoggedIn)
             {
                 return 1;
             }

@@ -303,7 +303,6 @@
                 To="0"
                 Duration="0:0:.75" />
         </Storyboard>
-
     </UserControl.Resources>
 
     <Grid Name="page">
@@ -322,7 +321,5 @@
                 </TransformGroup>
             </ContentControl.RenderTransform>
         </ContentControl>
-
     </Grid>
-
 </UserControl>

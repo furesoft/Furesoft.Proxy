@@ -45,6 +45,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Mustache, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mustache.1.0.1\lib\net452\Mustache.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
@@ -75,6 +78,11 @@
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BlockTemplate.cs" />
+    <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\RedirectFilter.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Pages\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
@@ -128,7 +136,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

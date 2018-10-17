@@ -7,7 +7,7 @@ namespace Furesoft.Proxy.Services
     {
         //ToDo: implement communication with service to reload database
 
-        ServiceController sc = new ServiceController("Furesoft Proxy Service");
+        private ServiceController sc = new ServiceController("Furesoft Proxy Service");
 
         public bool IsRunning()
         {

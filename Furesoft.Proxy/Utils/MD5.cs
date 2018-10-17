@@ -7,7 +7,7 @@ namespace Furesoft.Proxy.Utils
     {
         public static string ToHash(string src)
         {
-            using(var cs = new MD5CryptoServiceProvider())
+            using (var cs = new MD5CryptoServiceProvider())
             {
                 var hashBytes = cs.ComputeHash(Encoding.ASCII.GetBytes(src));
 
