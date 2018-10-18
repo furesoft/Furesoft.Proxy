@@ -45,7 +45,6 @@
     <Compile Include="Filter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectFilter.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj">

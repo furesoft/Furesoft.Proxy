@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="PageTransitionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagEditor.cs" />
     <Compile Include="WidthConverter.cs" />
   </ItemGroup>
   <ItemGroup>

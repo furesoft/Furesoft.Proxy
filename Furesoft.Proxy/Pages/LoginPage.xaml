@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ap="clr-namespace:Furesoft.Proxy.Core.AttachedProperties;assembly=Furesoft.Proxy.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:Furesoft.Proxy.ViewModels"
     d:DesignHeight="450"
@@ -25,19 +26,6 @@
         </Grid.RowDefinitions>
 
         <Label
-            Grid.Row="0"
-            Grid.Column="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Content="Username" />
-        <TextBox
-            Grid.Row="0"
-            Grid.Column="1"
-            VerticalAlignment="Center"
-            ap:FocusProperty.Value="True"
-            Text="{Binding Username}" />
-
-        <Label
             Grid.Row="1"
             Grid.Column="0"
             HorizontalAlignment="Center"
@@ -56,7 +44,13 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Command="{Binding LoginCommand}"
-            Content="Login"
-            IsDefault="True" />
+            IsDefault="True"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            ToolTip="Login">
+            <material:PackIcon
+                Width="24"
+                Height="24"
+                Kind="Login" />
+        </Button>
     </Grid>
 </UserControl>

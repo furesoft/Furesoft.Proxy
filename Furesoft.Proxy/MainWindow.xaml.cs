@@ -37,6 +37,10 @@ namespace Furesoft.Proxy
                     container.ShowPage(new FilterPage());
                     break;
 
+                case "Filter Groups":
+                    container.ShowPage(new FilterGroupsPage());
+                    break;
+
                 case "Redirects":
                     container.ShowPage(new RedirectPage());
                     break;

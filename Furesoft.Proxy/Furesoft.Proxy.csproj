@@ -83,6 +83,9 @@
     <Compile Include="Converter\PageIndexConverter.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="NotificationManager.cs" />
+    <Compile Include="Pages\FilterGroupsPage.xaml.cs">
+      <DependentUpon>FilterGroupsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\FilterGroupsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FilterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

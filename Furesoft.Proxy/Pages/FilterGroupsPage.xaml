@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Furesoft.Proxy.Pages.SettingsPage"
+    x:Class="Furesoft.Proxy.Pages.FilterGroupsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,11 +14,11 @@
             <material:PackIcon
                 Margin="10"
                 HorizontalAlignment="Center"
-                Kind="Settings" />
+                Kind="Group" />
             <TextBlock
                 Margin="7,0,0,0"
                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
-                Text="Settings" />
+                Text="Filter Groups" />
         </StackPanel>
     </Grid>
 </UserControl>
