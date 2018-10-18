@@ -53,5 +53,31 @@ namespace Furesoft.Proxy
                     break;
             }
         }
+
+        private void searchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var c = ((MainViewModel)DataContext);
+            c.SearchChanged = !string.IsNullOrEmpty(searchTb.Text);
+
+            var sites = new[] { "Filter", "Redirects", "Settings" };
+
+            c.SearchPopupSource.Clear();
+
+            foreach (var s in sites)
+            {
+                if(s.ToLower().Contains(searchTb.Text.ToLower()))
+                {
+                    //ToDo: implement custom item with icon
+                    // Icons: Page, settingsentry, action
+                    var item = new ListBoxItem() { Content = s };
+                    item.Selected += (ss, ee) =>
+                    {
+                        searchTb.Text = "";
+                    };
+
+                    c.SearchPopupSource.Add(item);
+                }
+            }
+        }
     }
 }

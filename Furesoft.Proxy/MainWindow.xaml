@@ -19,6 +19,7 @@
     TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Resources />
 
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +34,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="572*" />
+                    <ColumnDefinition Width="402*" />
+                    <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
@@ -41,19 +43,60 @@
                     x:Name="MenuToggleButton"
                     Grid.Column="0"
                     IsChecked="False"
-                    Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                    Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                     Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}" />
 
                 <TextBlock
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
                     Margin="0,0,-0.4,-0.6"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Style="{StaticResource MaterialDesignTitleTextBlock}"
                     Text="Furesoft Internet Filter Admin Panel" />
 
-                <material:PopupBox Grid.Column="2" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
+                <!--  Search Bar  -->
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        x:Name="searchTb"
+                        Grid.Column="1"
+                        MinWidth="200"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        material:HintAssist.Hint="Type to search..."
+                        material:TextFieldAssist.DecorationVisibility="Visible"
+                        BorderThickness="0"
+                        Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="searchTb_TextChanged"
+                        Visibility="{Binding ElementName=SearchToggle, Path=IsChecked, Converter={StaticResource BoolToVisibile}}" />
+                    <Popup
+                        IsOpen="{Binding SearchChanged}"
+                        Placement="Bottom"
+                        AllowsTransparency="True"
+                        PlacementTarget="{Binding ElementName=searchTb}">
+
+                       <ListBox Height="100" Width="150" ItemsSource="{Binding SearchPopupSource}" />
+                    </Popup>
+                    <ToggleButton
+                        x:Name="SearchToggle"
+                        Grid.Column="2"
+                        Style="{DynamicResource SearchToggleStyle}"
+                        Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
+                        <material:PackIcon
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Kind="Magnify"
+                            Opacity=".56" />
+                    </ToggleButton>
+                </Grid>
+
+                <material:PopupBox Grid.Column="3" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
                     <ListView>
                         <Button Command="{Binding LogoutCommand}">Abmelden</Button>
                     </ListView>
@@ -123,7 +166,5 @@
                 Margin="25"
                 TransitionType="SlideAndFade" />
         </material:DrawerHost>
-
-        <material:Chip Icon="hello" />
     </Grid>
 </Window>
