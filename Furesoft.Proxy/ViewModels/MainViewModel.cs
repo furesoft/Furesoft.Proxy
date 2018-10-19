@@ -28,6 +28,16 @@ namespace Furesoft.Proxy.ViewModels
             set { _searchChanged = value; OnPropertyChanged(); }
         }
 
+        private bool _searchBarVisible;
+        public bool SearchBarVisible
+        {
+            get { return _searchBarVisible; }
+            set {
+                _searchBarVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MainViewModel()
         {
             LogoutCommand = new RelayCommand((_) =>

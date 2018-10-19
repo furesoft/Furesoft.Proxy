@@ -36,6 +36,7 @@
             Grid.Row="1"
             Grid.Column="1"
             VerticalAlignment="Center"
+            ap:FocusProperty.Value="True"
             PasswordChanged="passwordBox_PasswordChanged" />
 
         <Button

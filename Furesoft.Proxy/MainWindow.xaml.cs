@@ -1,5 +1,6 @@
 ﻿using Furesoft.Proxy.Core;
 using Furesoft.Proxy.Pages;
+using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +19,8 @@ namespace Furesoft.Proxy
         {
             DataContext = new MainViewModel() { TransitionContainer = pageContainer };
 
-            var container = ((MainViewModel)DataContext).TransitionContainer;
+            var context = (MainViewModel)DataContext;
+            var container = context.TransitionContainer;
 
             ServiceLocator.Instance.PageContainer = container;
 
@@ -32,7 +34,12 @@ namespace Furesoft.Proxy
 
             MenuToggleButton.IsChecked = false;
 
-            switch (tb.Text)
+            ShowPage(tb.Text, container);
+        }
+
+        private static void ShowPage(string tb, PageTransition container)
+        {
+            switch (tb)
             {
                 case "Filter":
                     container.ShowPage(new FilterPage());
@@ -48,6 +55,9 @@ namespace Furesoft.Proxy
 
                 case "Settings":
                     container.ShowPage(new SettingsPage());
+                    break;
+                case "Templates":
+                    container.ShowPage(new TemplatesPage());
                     break;
 
                 default:
@@ -87,6 +97,22 @@ namespace Furesoft.Proxy
 
         private void StackPanel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            var item = ListboxPopup.SelectedItem as SearchPopupItem;
+            var container = ((MainViewModel)DataContext).TransitionContainer;
+
+            switch (item.PopupType)
+            {
+                case PopupItemType.Page:
+                    ShowPage(item.Title, container);
+                    break;
+                case PopupItemType.Setting:
+                    break;
+                case PopupItemType.Action:
+                    break;
+                default:
+                    break;
+            }
+
             searchTb.Text = "";
         }
     }

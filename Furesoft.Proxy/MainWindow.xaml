@@ -75,45 +75,51 @@
                         Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                         TextChanged="searchTb_TextChanged"
-                        Visibility="{Binding ElementName=SearchToggle, Path=IsChecked, Converter={StaticResource BoolToVisibile}}" />
+                        Visibility="{Binding SearchBarVisible, Converter={StaticResource BoolToVisibile}}" />
                     <Popup
                         AllowsTransparency="True"
                         IsOpen="{Binding SearchChanged}"
                         Placement="Bottom"
                         PlacementTarget="{Binding ElementName=searchTb}">
+                        <Border BorderBrush="Black" BorderThickness="3">
+                            <ListBox
+                                x:Name="ListboxPopup"
+                                Width="200"
+                                Height="100"
+                                ItemsSource="{Binding SearchPopupSource}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ui:AutoGrid Columns="20,*" MouseLeftButtonUp="StackPanel_MouseLeftButtonUp">
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                DockPanel.Dock="Left"
+                                                Kind="BookOpenPageVariant"
+                                                Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Page}" />
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                DockPanel.Dock="Left"
+                                                Kind="Settings"
+                                                Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Setting}" />
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                DockPanel.Dock="Left"
+                                                Kind="GestureTap"
+                                                Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Action}" />
 
-                        <ListBox
-                            Width="200"
-                            Height="100"
-                            ItemsSource="{Binding SearchPopupSource}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <ui:AutoGrid Columns="20,*" MouseLeftButtonUp="StackPanel_MouseLeftButtonUp">
-                                        <material:PackIcon
-                                            Grid.Column="0"
-                                            DockPanel.Dock="Left"
-                                            Kind="BookOpenPageVariant"
-                                            Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Page}" />
-                                        <material:PackIcon
-                                            Grid.Column="0"
-                                            DockPanel.Dock="Left"
-                                            Kind="Settings"
-                                            Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Setting}" />
-                                        <material:PackIcon
-                                            Grid.Column="0"
-                                            DockPanel.Dock="Left"
-                                            Kind="GestureTap"
-                                            Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Action}" />
-
-                                        <TextBlock Grid.Column="1" DockPanel.Dock="Right" Text="{Binding Title}" />
-                                    </ui:AutoGrid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                DockPanel.Dock="Right"
+                                                Text="{Binding Title}" />
+                                        </ui:AutoGrid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
                     </Popup>
                     <ToggleButton
                         x:Name="SearchToggle"
                         Grid.Column="2"
+                        IsChecked="{Binding SearchBarVisible}"
                         Style="{DynamicResource SearchToggleStyle}"
                         Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={StaticResource BoolToVisibile}}">
                         <material:PackIcon
@@ -156,6 +162,85 @@
                                 Margin="7,0,0,0"
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Filter Groups" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Selected="ListBoxItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <Viewbox
+                                Grid.Column="0"
+                                Width="16"
+                                Height="16"
+                                Margin="10"
+                                VerticalAlignment="Top"
+                                Stretch="Fill">
+
+                                <Canvas
+                                    Name="Capa_1"
+                                    Canvas.Left="0"
+                                    Canvas.Top="0"
+                                    Width="512"
+                                    Height="512">
+                                    <Canvas.RenderTransform>
+                                        <TranslateTransform X="0" Y="0" />
+                                    </Canvas.RenderTransform>
+                                    <Canvas.Resources />
+
+                                    <Canvas Name="g75">
+                                        <Canvas Name="g73">
+                                            <Path
+                                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                Name="path71"
+                                                Fill="#000000">
+                                                <Path.Data>
+                                                    <PathGeometry Figures="M491.383 0H20.617C9.23 0 0 9.23 0 20.617v470.765C0 502.77 9.23 512 20.617 512h470.765    C502.77 512 512 502.77 512 491.383V20.617C512 9.23 502.77 0 491.383 0z M470.765 470.765H41.235V41.235h429.53V470.765z" FillRule="NonZero" />
+                                                </Path.Data>
+                                            </Path>
+                                        </Canvas>
+                                    </Canvas>
+                                    <Canvas Name="g81">
+                                        <Canvas Name="g79">
+                                            <Rectangle
+                                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                Name="rect77"
+                                                Canvas.Left="20.617"
+                                                Canvas.Top="173.187"
+                                                Width="471.452"
+                                                Height="41.235"
+                                                Fill="#000000" />
+                                        </Canvas>
+                                    </Canvas>
+                                    <Canvas Name="g87">
+                                        <Canvas Name="g85">
+                                            <Rectangle
+                                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                Name="rect83"
+                                                Canvas.Left="298.266"
+                                                Canvas.Top="193.804"
+                                                Width="41.235"
+                                                Height="298.266"
+                                                Fill="#000000" />
+                                        </Canvas>
+                                    </Canvas>
+                                    <Canvas Name="g93">
+                                        <Canvas Name="g91">
+                                            <Rectangle
+                                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                Name="rect89"
+                                                Canvas.Left="20.617"
+                                                Canvas.Top="318.196"
+                                                Width="298.266"
+                                                Height="41.235"
+                                                Fill="#000000" />
+                                        </Canvas>
+                                    </Canvas>
+                                </Canvas>
+                            </Viewbox>
+
+                            <TextBlock
+                                Margin="7,0,0,0"
+                                Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                Text="Templates" />
                         </StackPanel>
                     </ListBoxItem>
 

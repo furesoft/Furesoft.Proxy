@@ -2,10 +2,9 @@
 
 namespace Furesoft.Proxy.Pages
 {
-    /// <summary>
-    public partial class MainPage : UserControl
+    public partial class TemplatesPage : UserControl
     {
-        public MainPage()
+        public TemplatesPage()
         {
             InitializeComponent();
         }
