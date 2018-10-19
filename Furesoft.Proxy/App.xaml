@@ -7,7 +7,6 @@
     StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
 
@@ -19,10 +18,14 @@
 
                 <!--  Search Button  -->
                 <ResourceDictionary Source="pack://application:,,,/Furesoft.Proxy.UI;component/SearchToggleStyle.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
+
             <c:BooleanToVisibilityConverter x:Key="BoolToVisibile" />
             <c:PageIndexConverter x:Key="PageIndex" />
             <c:ItemTypeConverter x:Key="ItemTypeConverter" />
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

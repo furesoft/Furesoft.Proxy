@@ -51,6 +51,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoGrid.cs" />
     <Compile Include="CenterConverter.cs" />
     <Compile Include="HeightConverter.cs" />
     <Compile Include="InvertConverter.cs" />
