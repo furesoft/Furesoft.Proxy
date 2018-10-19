@@ -76,12 +76,27 @@
                         TextChanged="searchTb_TextChanged"
                         Visibility="{Binding ElementName=SearchToggle, Path=IsChecked, Converter={StaticResource BoolToVisibile}}" />
                     <Popup
+                        AllowsTransparency="True"
                         IsOpen="{Binding SearchChanged}"
                         Placement="Bottom"
-                        AllowsTransparency="True"
                         PlacementTarget="{Binding ElementName=searchTb}">
 
-                       <ListBox Height="100" Width="150" ItemsSource="{Binding SearchPopupSource}" />
+                        <ListBox
+                            Width="200"
+                            Height="100"
+                            ItemsSource="{Binding SearchPopupSource}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel MouseLeftButtonUp="StackPanel_MouseLeftButtonUp">
+                                        <material:PackIcon DockPanel.Dock="Left" Kind="BookOpenPageVariant" Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Page}" />
+                                        <material:PackIcon DockPanel.Dock="Left" Kind="Settings" Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Setting}" />
+                                        <material:PackIcon DockPanel.Dock="Left" Kind="GestureTap" Visibility="{Binding PopupType, Converter={StaticResource ItemTypeConverter}, ConverterParameter=Action}" />
+                                        
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding Title}" />
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Popup>
                     <ToggleButton
                         x:Name="SearchToggle"

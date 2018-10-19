@@ -12,7 +12,7 @@ namespace Furesoft.Proxy.ViewModels
         public ICommand LogoutCommand { get; set; }
         public ICommand SearchCommand { get; set; }
         public PageTransition TransitionContainer { get; set; }
-        public ObservableCollection<ListBoxItem> SearchPopupSource { get; set; } = new ObservableCollection<ListBoxItem>();
+        public ObservableCollection<SearchPopupItem> SearchPopupSource { get; set; } = new ObservableCollection<SearchPopupItem>();
 
         private string _searchText;
         public string SearchText

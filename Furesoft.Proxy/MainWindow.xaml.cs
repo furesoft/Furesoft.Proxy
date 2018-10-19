@@ -1,4 +1,5 @@
-﻿using Furesoft.Proxy.Pages;
+﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,22 +63,31 @@ namespace Furesoft.Proxy
             var sites = new[] { "Filter", "Redirects", "Settings" };
 
             c.SearchPopupSource.Clear();
+            CreatePopupItem(c, sites, PopupItemType.Page);
+            CreatePopupItem(c, new[] { "Add Filter", "Add Redirect", "Add Filtergroup" }, PopupItemType.Action);
+            CreatePopupItem(c, new[] { "Change Password", "Search for Updates" }, PopupItemType.Setting);
+        }
 
-            foreach (var s in sites)
+        private void CreatePopupItem(MainViewModel model, string[] src, PopupItemType type = PopupItemType.Page)
+        {
+            foreach (var s in src)
             {
-                if(s.ToLower().Contains(searchTb.Text.ToLower()))
+                if (s.ToLower().Contains(searchTb.Text.ToLower()))
                 {
-                    //ToDo: implement custom item with icon
-                    // Icons: Page, settingsentry, action
-                    var item = new ListBoxItem() { Content = s };
-                    item.Selected += (ss, ee) =>
+                    var it = new SearchPopupItem
                     {
-                        searchTb.Text = "";
+                        PopupType = type,
+                        Title = s
                     };
 
-                    c.SearchPopupSource.Add(item);
+                    model.SearchPopupSource.Add(it);
                 }
             }
+        }
+
+        private void StackPanel_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            searchTb.Text = "";
         }
     }
 }

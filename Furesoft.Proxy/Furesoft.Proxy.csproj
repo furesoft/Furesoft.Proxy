@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>filter.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
@@ -80,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\ItemTypeConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="NotificationManager.cs" />
@@ -171,7 +175,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="filter.ico" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj">
       <Project>{04d5d52d-38f4-4ba3-9e62-6e0e577dfdf8}</Project>
