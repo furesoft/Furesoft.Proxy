@@ -6,20 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Width="450"
+    Height="200"
     mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
         <StackPanel
+            Grid.Row="1"
             Height="50"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Orientation="Horizontal">
             <Button Margin="10" Command="{x:Static material:DialogHost.CloseDialogCommand}">Cancel</Button>
-            <Button Command="{Binding DialogOkCommand, Converter={c:DialoOKCommandSelector}}">OK</Button>
+            <Button Command="{Binding OkCommand}">OK</Button>
         </StackPanel>
 
-        <TextBlock Text="Add Filter" />
+        <TextBlock Grid.Row="0" Text="Add Filter" />
     </Grid>
 </UserControl>

@@ -1,10 +1,11 @@
 ﻿using Furesoft.Proxy.Utils;
 using Furesoft.Proxy.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Pages
 {
-    public partial class LoginPage
+    public partial class LoginPage : UserControl
     {
         public LoginPage()
         {

@@ -1,4 +1,6 @@
-﻿namespace Furesoft.Proxy.Rpc.Interfaces
+﻿using Furesoft.Proxy.Models;
+
+namespace Furesoft.Proxy.Rpc.Interfaces
 {
     public interface IFilterGroupOperations
     {

@@ -14,6 +14,7 @@ namespace Furesoft.Proxy.Converter
         {
             if(value is DialogType dt)
             {
+                //ToDo: add dialogs
                 switch (dt)
                 {
                     case DialogType.AddFilter:

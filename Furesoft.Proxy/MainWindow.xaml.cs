@@ -115,8 +115,8 @@ namespace Furesoft.Proxy
                     //ToDo: repair dialog not clickable
                     var c = ((MainViewModel)DataContext);
                     c.DialogContent = GetDialogItem(item.Title);
+                    c.DialogOpened = true;
 
-                    DialogHost.Show(new DialogContentConverter().Convert(c.DialogContent, null, null, null));
                     break;
                 default:
                     break;

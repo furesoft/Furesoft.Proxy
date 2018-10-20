@@ -10,7 +10,7 @@
     xmlns:ui="clr-namespace:Furesoft.Proxy.UI;assembly=Furesoft.Proxy.UI"
     Title="Furesoft.Proxy Administration Panel"
     Width="800"
-    Height="450"
+    Height="650"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     Icon="/filter.ico"
@@ -141,12 +141,15 @@
         </material:Card>
 
         <material:DrawerHost
+            x:Name="drawerHost"
             Grid.Row="1"
             Margin="0,0,0,1"
             IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+
+
             <material:DrawerHost.LeftDrawerContent>
-                <ListBox>
-                    <ListBoxItem Selected="ListBoxItem_Selected">
+                <ListView>
+                    <ListViewItem Margin="-200,0,0,0" Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Kind="Filter" />
                             <TextBlock
@@ -154,9 +157,9 @@
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Filter" />
                         </StackPanel>
-                    </ListBoxItem>
+                    </ListViewItem>
 
-                    <ListBoxItem Selected="ListBoxItem_Selected">
+                    <ListViewItem Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Kind="Group" />
                             <TextBlock
@@ -164,9 +167,9 @@
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Filter Groups" />
                         </StackPanel>
-                    </ListBoxItem>
+                    </ListViewItem>
 
-                    <ListBoxItem Selected="ListBoxItem_Selected">
+                    <ListViewItem Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <Viewbox
                                 Grid.Column="0"
@@ -243,11 +246,11 @@
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Templates" />
                         </StackPanel>
-                    </ListBoxItem>
+                    </ListViewItem>
 
                     <Separator Height="5" Foreground="Black" />
 
-                    <ListBoxItem Selected="ListBoxItem_Selected">
+                    <ListViewItem Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <Viewbox
                                 Width="16"
@@ -260,11 +263,11 @@
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Redirects" />
                         </StackPanel>
-                    </ListBoxItem>
+                    </ListViewItem>
 
                     <Separator Height="5" Foreground="Black" />
 
-                    <ListBoxItem Selected="ListBoxItem_Selected">
+                    <ListViewItem Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Kind="Settings" />
                             <TextBlock
@@ -272,11 +275,14 @@
                                 Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                                 Text="Settings" />
                         </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
+                    </ListViewItem>
+                </ListView>
             </material:DrawerHost.LeftDrawerContent>
 
-            <material:DialogHost x:Name="dhost">
+            <material:DialogHost
+                x:Name="dhost"
+                DialogContent="{Binding DialogContent, Converter={c:DialogContentConverter}}"
+                IsOpen="{Binding DialogOpened}">
                 <ui:PageTransition
                     Name="pageContainer"
                     Margin="25"
