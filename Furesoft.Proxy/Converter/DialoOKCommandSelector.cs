@@ -5,18 +5,14 @@ using System.Windows.Markup;
 
 namespace Furesoft.Proxy.Converter
 {
-    public class PageIndexConverter : MarkupExtension, IValueConverter
+    public class DialoOKCommandSelector : MarkupExtension, IValueConverter
     {
-        private static PageIndexConverter Instance = new PageIndexConverter();
+        private static DialoOKCommandSelector Instance = new DialoOKCommandSelector();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (ServiceLocator.Instance.IsLoggedIn)
-            {
-                return 1;
-            }
-
-            return 0;
+            //ToDo: implement command selector
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -2,11 +2,14 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace Furesoft.Proxy.Converter
 {
-    public class BooleanToVisibilityConverter : IValueConverter
+    public class BooleanToVisibilityConverter : MarkupExtension, IValueConverter
     {
+        private static BooleanToVisibilityConverter Instance = new BooleanToVisibilityConverter();
+
         private object GetVisibility(object value)
         {
             if (!(value is bool))
@@ -27,6 +30,11 @@ namespace Furesoft.Proxy.Converter
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Instance;
         }
     }
 }

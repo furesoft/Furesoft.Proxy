@@ -89,8 +89,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\DialogContentConverter.cs" />
+    <Compile Include="Converter\DialoOKCommandSelector.cs" />
     <Compile Include="Converter\ItemTypeConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />
+    <Compile Include="Dialogs\AddFilterDialog.xaml.cs">
+      <DependentUpon>AddFilterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Pages\FilterGroupsPage.xaml.cs">
@@ -117,6 +123,10 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Services\WService.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="Dialogs\AddFilterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

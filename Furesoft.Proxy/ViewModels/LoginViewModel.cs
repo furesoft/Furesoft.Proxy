@@ -22,7 +22,7 @@ namespace Furesoft.Proxy.ViewModels
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand((cp) =>
+            LoginCommand = new ActionCommand((cp) =>
             {
                 var wservice = ServiceLocator.Instance.Provider.GetService<IWService>();
                 if (wservice.IsRunning())

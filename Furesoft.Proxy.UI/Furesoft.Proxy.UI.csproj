@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoGrid.cs" />
-    <Compile Include="CenterConverter.cs" />
-    <Compile Include="HeightConverter.cs" />
-    <Compile Include="InvertConverter.cs" />
+    <Compile Include="Converter\CenterConverter.cs" />
+    <Compile Include="Converter\HeightConverter.cs" />
+    <Compile Include="Converter\InvertConverter.cs" />
     <Compile Include="PageTransition.xaml.cs">
       <DependentUpon>PageTransition.xaml</DependentUpon>
     </Compile>

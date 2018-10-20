@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace Furesoft.Proxy.Core
 {
-    public class RelayCommand : ICommand
+    public class ActionCommand : ICommand
     {
-        public RelayCommand(Action<object> p)
+        public ActionCommand(Action<object> p)
         {
             Action = p;
         }

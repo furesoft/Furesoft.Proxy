@@ -38,14 +38,21 @@ namespace Furesoft.Proxy.ViewModels
             }
         }
 
+        private DialogType _dialogContent;
+        public DialogType DialogContent
+        {
+            get { return _dialogContent; }
+            set { _dialogContent = value;OnPropertyChanged(); }
+        }
+
         public MainViewModel()
         {
-            LogoutCommand = new RelayCommand((_) =>
+            LogoutCommand = new ActionCommand((_) =>
             {
                 ServiceLocator.Instance.IsLoggedIn = false;
                 TransitionContainer.ShowPage(new LoginPage());
             });
-            SearchCommand = new RelayCommand( _ =>
+            SearchCommand = new ActionCommand( _ =>
             {
                 
             });

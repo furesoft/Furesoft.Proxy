@@ -1,7 +1,10 @@
-﻿using Furesoft.Proxy.Core;
+﻿using Furesoft.Proxy.Converter;
+using Furesoft.Proxy.Core;
 using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,6 +26,7 @@ namespace Furesoft.Proxy
             var container = context.TransitionContainer;
 
             ServiceLocator.Instance.PageContainer = container;
+
 
             container.ShowPage(new LoginPage());
         }
@@ -108,12 +112,30 @@ namespace Furesoft.Proxy
                 case PopupItemType.Setting:
                     break;
                 case PopupItemType.Action:
+                    //ToDo: repair dialog not clickable
+                    var c = ((MainViewModel)DataContext);
+                    c.DialogContent = GetDialogItem(item.Title);
+
+                    DialogHost.Show(new DialogContentConverter().Convert(c.DialogContent, null, null, null));
                     break;
                 default:
                     break;
             }
 
             searchTb.Text = "";
+        }
+
+        private DialogType GetDialogItem(string title)
+        {
+            switch (title)
+            {
+                case "Add Filter":
+                    return DialogType.AddFilter;
+                default:
+                    break;
+            }
+
+            return DialogType.Empty;
         }
     }
 }

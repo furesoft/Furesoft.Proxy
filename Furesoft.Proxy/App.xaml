@@ -20,12 +20,6 @@
                 <ResourceDictionary Source="pack://application:,,,/Furesoft.Proxy.UI;component/SearchToggleStyle.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-
-            <c:BooleanToVisibilityConverter x:Key="BoolToVisibile" />
-            <c:PageIndexConverter x:Key="PageIndex" />
-            <c:ItemTypeConverter x:Key="ItemTypeConverter" />
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
