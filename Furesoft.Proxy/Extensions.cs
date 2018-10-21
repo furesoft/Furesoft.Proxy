@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace Furesoft.Proxy.Core
+namespace Furesoft.Proxy
 {
     public static class Extensions
     {

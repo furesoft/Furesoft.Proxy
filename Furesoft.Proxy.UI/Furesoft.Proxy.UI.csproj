@@ -75,11 +75,5 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj">
-      <Project>{04d5d52d-38f4-4ba3-9e62-6e0e577dfdf8}</Project>
-      <Name>Furesoft.Proxy.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

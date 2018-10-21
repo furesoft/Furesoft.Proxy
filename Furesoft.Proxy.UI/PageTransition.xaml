@@ -2,7 +2,6 @@
     x:Class="Furesoft.Proxy.UI.PageTransition"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:c="clr-namespace:Furesoft.Proxy.UI.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Furesoft.Proxy.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,7 +18,7 @@
             </Setter>
         </Style>
 
-        <c:CenterConverter x:Key="centerConverter" />
+        <local:CenterConverter x:Key="centerConverter" />
 
         <!--  Slide and Fade  -->
         <Storyboard x:Key="SlideAndFadeIn">

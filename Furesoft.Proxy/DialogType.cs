@@ -1,4 +1,4 @@
-﻿namespace Furesoft.Proxy.Core
+﻿namespace Furesoft.Proxy
 {
     public enum DialogType
     {

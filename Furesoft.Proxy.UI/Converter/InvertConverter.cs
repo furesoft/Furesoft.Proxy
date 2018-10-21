@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace Furesoft.Proxy.UI.Converter
+namespace Furesoft.Proxy.UI
 {
     internal class InvertConverter : IValueConverter
     {
