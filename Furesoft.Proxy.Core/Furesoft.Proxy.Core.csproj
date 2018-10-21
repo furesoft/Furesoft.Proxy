@@ -49,7 +49,10 @@
     <Compile Include="AttachedProperties\FocusAttachedProperty.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="CommandCollector.cs" />
+    <Compile Include="DialogType.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IServiceProviderExtensions.cs" />

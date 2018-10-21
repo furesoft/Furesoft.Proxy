@@ -1,4 +1,5 @@
-﻿using Furesoft.Proxy.Dialogs;
+﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Dialogs;
 using System;
 using System.Globalization;
 using System.Windows.Data;

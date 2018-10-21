@@ -22,7 +22,3 @@ using System.Windows.Markup;
 )]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy")]
-[assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy.Core")]
-[assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy.Core.AttachedProperties")]
-[assembly: XmlnsDefinition("http://furesoft.app/proxy", "Furesoft.Proxy.ViewModels")]
