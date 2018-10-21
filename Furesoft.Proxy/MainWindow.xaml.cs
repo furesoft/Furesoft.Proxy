@@ -3,6 +3,8 @@ using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -60,6 +62,7 @@ namespace Furesoft.Proxy
                 case "Settings":
                     container.ShowPage(new SettingsPage());
                     break;
+
                 case "Templates":
                     container.ShowPage(new TemplatesPage());
                     break;
@@ -71,6 +74,8 @@ namespace Furesoft.Proxy
 
         private void searchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
+            PopupItems.Clear();
+
             var c = ((MainViewModel)DataContext);
             c.SearchChanged = !string.IsNullOrEmpty(searchTb.Text);
 
@@ -87,22 +92,35 @@ namespace Furesoft.Proxy
 
             CreatePopupItem(c, SearchableCommandRepository.Instance.CommandNames, PopupItemType.Action);
             CreatePopupItem(c, new[] { "Change Password" }, PopupItemType.Setting);
+
+            AddPopupItems(c);
+        }
+
+        private List<SearchPopupItem> PopupItems = new List<SearchPopupItem>();
+
+        private void AddPopupItems(MainViewModel model)
+        {
+            foreach (var s in CommandUsageProvider.GetSortedCommandNames())
+            {
+                if (s.ToLower().Contains(searchTb.Text.ToLower()))
+                {
+                    model.SearchPopupSource.Add(PopupItems.Find(_ => _.Title == s));
+                }
+            }
         }
 
         private void CreatePopupItem(MainViewModel model, string[] src, PopupItemType type = PopupItemType.Page)
         {
             foreach (var s in src)
             {
-                if (s.ToLower().Contains(searchTb.Text.ToLower()))
+                var it = new SearchPopupItem
                 {
-                    var it = new SearchPopupItem
-                    {
-                        PopupType = type,
-                        Title = s
-                    };
+                    PopupType = type,
+                    Title = s
+                };
 
-                    model.SearchPopupSource.Add(it);
-                }
+                CommandUsageProvider.Add(s);
+                PopupItems.Add(it);
             }
         }
 
@@ -116,15 +134,18 @@ namespace Furesoft.Proxy
                 case PopupItemType.Page:
                     ShowPage(item.Title, container);
                     break;
+
                 case PopupItemType.Setting:
                     break;
+
                 case PopupItemType.Action:
                     //ToDo: repair dialog not clickable
                     var c = ((MainViewModel)DataContext);
-                    
+
                     SearchableCommandRepository.Instance.ExecuteCommand(item.Title, c);
 
                     break;
+
                 default:
                     break;
             }
@@ -138,6 +159,7 @@ namespace Furesoft.Proxy
             {
                 case "Add Filter":
                     return DialogType.AddFilter;
+
                 default:
                     break;
             }

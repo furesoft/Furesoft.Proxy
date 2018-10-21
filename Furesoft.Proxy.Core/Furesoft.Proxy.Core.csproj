@@ -50,6 +50,7 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="CommandCollector.cs" />
+    <Compile Include="CommandUsageParameter.cs" />
     <Compile Include="DialogType.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Extensions.cs" />

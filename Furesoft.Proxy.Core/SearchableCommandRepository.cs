@@ -22,13 +22,29 @@ namespace Furesoft.Proxy.Core
 
         public Action<string> OpenDialog { get; set; }
 
+        public string FindName(ICommand cmd)
+        {
+            return _storage.First(_ => _.Value == cmd).Key;
+        }
+
         public void Add(string name, ICommand cmd)
         {
+            var usageCombinedCommand = new ActionCommand( _=>
+            {
+                CommandUsageProvider.Add(name);
+
+                cmd.Execute(_);
+            });
+
             if (!_storage.ContainsKey(name))
             {
-                _storage.Add(name, cmd);
+                _storage.Add(name, usageCombinedCommand);
             }
-            _storage[name] = cmd;
+            else
+            {
+                _storage[name] = usageCombinedCommand;
+            }
+            CommandUsageProvider.Add(name);
         }
         public void AddDialogCommand(string name)
         {

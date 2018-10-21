@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Furesoft.Proxy.Core
@@ -18,14 +14,15 @@ namespace Furesoft.Proxy.Core
             {
                 var att = t.GetCustomAttribute<SearchableCommandAttribute>();
 
-                if(att != null)
+                if (att != null)
                 {
-                        var instance = (ICommand)Activator.CreateInstance(t);
+                    var instance = (ICommand)Activator.CreateInstance(t);
 
-                        SearchableCommandRepository.Instance.Add(att.Name, instance);
+                    SearchableCommandRepository.Instance.Add(att.Name, instance);
+                    CommandUsageProvider.Add(att.Name);
                 }
             }
-        } 
+        }
     }
 
     [AttributeUsage(AttributeTargets.Class)]
