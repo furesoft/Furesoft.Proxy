@@ -12,6 +12,16 @@ namespace Furesoft.Proxy.Core
 
         private Dictionary<string, ICommand> _storage = new Dictionary<string, ICommand>();
 
+        public ICommand this[string key]
+        {
+            get
+            {
+                return GetCommand(key);
+            }
+        }
+
+        public Action<string> OpenDialog { get; set; }
+
         public void Add(string name, ICommand cmd)
         {
             if (!_storage.ContainsKey(name))
@@ -19,6 +29,13 @@ namespace Furesoft.Proxy.Core
                 _storage.Add(name, cmd);
             }
             _storage[name] = cmd;
+        }
+        public void AddDialogCommand(string name)
+        {
+            Instance.Add(name, (_) =>
+            {
+                Instance.OpenDialog(name);
+            });
         }
 
         public void CombineCommands(string name, ICommand first, ICommand second)
@@ -40,6 +57,11 @@ namespace Furesoft.Proxy.Core
             if (_storage.ContainsKey(name)) return _storage[name];
 
             throw new KeyNotFoundException($"Command '{name}' not found");
+        }
+
+        public void ExecuteCommand(string name, object arg)
+        {
+            GetCommand(name).Execute(arg);
         }
 
         public string[] CommandNames

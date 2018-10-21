@@ -1,9 +1,7 @@
-﻿using Furesoft.Proxy.Converter;
-using Furesoft.Proxy.Core;
+﻿using Furesoft.Proxy.Core;
 using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
-using MaterialDesignThemes.Wpf;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +25,8 @@ namespace Furesoft.Proxy
 
             ServiceLocator.Instance.PageContainer = container;
 
+            //Collect searchable commands
+            CommandCollector.Collect(typeof(MainWindow).Assembly);
 
             container.ShowPage(new LoginPage());
         }
@@ -78,8 +78,15 @@ namespace Furesoft.Proxy
 
             c.SearchPopupSource.Clear();
             CreatePopupItem(c, sites, PopupItemType.Page);
-            CreatePopupItem(c, new[] { "Add Filter", "Add Redirect", "Add Filtergroup" }, PopupItemType.Action);
-            CreatePopupItem(c, new[] { "Change Password", "Search for Updates" }, PopupItemType.Setting);
+
+            SearchableCommandRepository.Instance.OpenDialog = new Action<string>((_) =>
+            {
+                c.DialogContent = GetDialogItem(_);
+                c.DialogOpened = true;
+            });
+
+            CreatePopupItem(c, SearchableCommandRepository.Instance.CommandNames, PopupItemType.Action);
+            CreatePopupItem(c, new[] { "Change Password" }, PopupItemType.Setting);
         }
 
         private void CreatePopupItem(MainViewModel model, string[] src, PopupItemType type = PopupItemType.Page)
@@ -114,8 +121,8 @@ namespace Furesoft.Proxy
                 case PopupItemType.Action:
                     //ToDo: repair dialog not clickable
                     var c = ((MainViewModel)DataContext);
-                    c.DialogContent = GetDialogItem(item.Title);
-                    c.DialogOpened = true;
+                    
+                    SearchableCommandRepository.Instance.ExecuteCommand(item.Title, c);
 
                     break;
                 default:
