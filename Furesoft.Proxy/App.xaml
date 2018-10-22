@@ -18,8 +18,31 @@
 
                 <!--  Search Button  -->
                 <ResourceDictionary Source="pack://application:,,,/Furesoft.Proxy.UI;component/SearchToggleStyle.xaml" />
+                <!--  Search Popup Toggle Style  -->
 
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="StarToggleButtonStyle" TargetType="ToggleButton">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <material:PackIcon Foreground="{TemplateBinding Foreground}" Kind="Star" />
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Foreground" Value="Yellow" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

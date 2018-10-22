@@ -13,6 +13,12 @@ namespace Furesoft.Proxy.Core
             set { popupItemType = value; OnPropertyChanged(); }
         }
 
+        private bool _isFav;
+        public bool IsFavourite
+        {
+            get { return _isFav; }
+            set { _isFav = value; OnPropertyChanged(); }
+        }
 
         public event EventHandler ItemClicked = delegate { };
     }
