@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Xaml;
 
 namespace Furesoft.Proxy.Core
 {
     public class SearchableCommandRepository
     {
         public static SearchableCommandRepository Instance = new SearchableCommandRepository();
-
+        
         private Dictionary<string, ICommand> _storage = new Dictionary<string, ICommand>();
 
         public ICommand this[string key]
@@ -31,7 +33,7 @@ namespace Furesoft.Proxy.Core
         {
             var usageCombinedCommand = new ActionCommand( _=>
             {
-                CommandUsageProvider.Add(name);
+                CommandUsageProvider.Instance.Add(name);
 
                 cmd.Execute(_);
             });
@@ -44,7 +46,7 @@ namespace Furesoft.Proxy.Core
             {
                 _storage[name] = usageCombinedCommand;
             }
-            CommandUsageProvider.Add(name);
+            CommandUsageProvider.Instance.Add(name);
         }
         public void AddDialogCommand(string name)
         {

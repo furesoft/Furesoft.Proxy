@@ -4,6 +4,7 @@ using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -100,7 +101,7 @@ namespace Furesoft.Proxy
 
         private void AddPopupItems(MainViewModel model)
         {
-            foreach (var s in CommandUsageProvider.GetSortedCommandNames())
+            foreach (var s in CommandUsageProvider.Instance.GetSortedCommandNames())
             {
                 if (s.ToLower().Contains(searchTb.Text.ToLower()))
                 {
@@ -116,10 +117,11 @@ namespace Furesoft.Proxy
                 var it = new SearchPopupItem
                 {
                     PopupType = type,
-                    Title = s
+                    Title = s,
+                    IsFavourite = CommandUsageProvider.Instance.IsFavorite(s)
                 };
 
-                CommandUsageProvider.Add(s);
+                CommandUsageProvider.Instance.Add(s);
 
                 if (!PopupItems.Contains(it))
                 {
@@ -175,5 +177,9 @@ namespace Furesoft.Proxy
             return DialogType.Empty;
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            CommandUsageProvider.Instance.Save();
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Furesoft.Proxy.Core
                     var instance = (ICommand)Activator.CreateInstance(t);
 
                     SearchableCommandRepository.Instance.Add(att.Name, instance);
-                    CommandUsageProvider.Add(att.Name);
+                    CommandUsageProvider.Instance.Add(att.Name);
                 }
             }
         }

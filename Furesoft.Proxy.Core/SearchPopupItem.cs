@@ -17,7 +17,17 @@ namespace Furesoft.Proxy.Core
         public bool IsFavourite
         {
             get { return _isFav; }
-            set { _isFav = value; OnPropertyChanged(); }
+            set {
+                _isFav = value;
+                if(value)
+                {
+                    CommandUsageProvider.Instance.AddFavorite(Title);
+                }
+                else
+                {
+                    CommandUsageProvider.Instance.RemoveFavorite(Title);
+                }
+                OnPropertyChanged(); }
         }
 
         public event EventHandler ItemClicked = delegate { };
