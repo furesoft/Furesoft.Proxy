@@ -159,6 +159,10 @@ namespace Furesoft.Proxy
             {
                 case "Add Filter":
                     return DialogType.AddFilter;
+                case "Add Filter Group":
+                    return DialogType.AddFilterGroup;
+                case "Add Redirect":
+                    return DialogType.AddRedirect;
 
                 default:
                     break;
@@ -166,5 +170,6 @@ namespace Furesoft.Proxy
 
             return DialogType.Empty;
         }
+
     }
 }
