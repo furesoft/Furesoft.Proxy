@@ -23,20 +23,32 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="StarToggleButtonStyle" TargetType="ToggleButton">
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ToggleButton">
-                            <material:PackIcon Foreground="{TemplateBinding Foreground}" Kind="Star" />
-
+                            <Grid>
+                                <material:PackIcon
+                                    x:Name="full"
+                                    Width="{TemplateBinding Width}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Kind="Star"
+                                    Visibility="Collapsed" />
+                                <material:PackIcon
+                                    x:Name="empty"
+                                    Width="{TemplateBinding Width}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Kind="StarOutline" />
+                            </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsChecked" Value="True">
                                     <Setter Property="Foreground" Value="Yellow" />
+                                    <Setter TargetName="empty" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="full" Property="Visibility" Value="Visible" />
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="False">
                                     <Setter Property="Foreground" Value="Black" />
+                                    <Setter TargetName="empty" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="full" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

@@ -74,7 +74,7 @@ namespace Furesoft.Proxy
 
         private void searchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PopupItems.Clear();
+            //PopupItems.Clear();
 
             var c = ((MainViewModel)DataContext);
             c.SearchChanged = !string.IsNullOrEmpty(searchTb.Text);
@@ -120,7 +120,11 @@ namespace Furesoft.Proxy
                 };
 
                 CommandUsageProvider.Add(s);
-                PopupItems.Add(it);
+
+                if (!PopupItems.Contains(it))
+                {
+                    PopupItems.Add(it);
+                }
             }
         }
 

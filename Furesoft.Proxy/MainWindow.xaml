@@ -21,7 +21,6 @@
     TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Window.Resources />
 
     <Grid>
         <Grid.RowDefinitions>
@@ -46,7 +45,7 @@
                     Grid.Column="0"
                     IsChecked="False"
                     Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
-                    Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={c:BooleanToVisibilityConverter}}" />
+                    Visibility="{Binding IsLoggedIn, Converter={c:BooleanToVisibilityConverter}, Source={x:Static local:ServiceLocator.Instance}}" />
 
                 <TextBlock
                     Grid.Column="1"
@@ -66,9 +65,7 @@
 
                     <TextBox
                         x:Name="searchTb"
-                        Grid.Column="1"
                         MinWidth="200"
-                        Margin="8,0,0,0"
                         VerticalAlignment="Center"
                         material:HintAssist.Hint="Type to search..."
                         material:TextFieldAssist.DecorationVisibility="Visible"
@@ -93,18 +90,32 @@
                                 ItemsSource="{Binding SearchPopupSource}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel MouseLeftButtonUp="StackPanel_MouseLeftButtonUp" Orientation="Horizontal">
-                                            <material:PackIcon Kind="BookOpenPageVariant" Visibility="{Binding PopupType, Converter={c:ItemTypeConverter}, ConverterParameter=Page}" />
-                                            <material:PackIcon Kind="Settings" Visibility="{Binding PopupType, Converter={c:ItemTypeConverter}, ConverterParameter=Setting}" />
-                                            <material:PackIcon Kind="GestureTap" Visibility="{Binding PopupType, Converter={c:ItemTypeConverter}, ConverterParameter=Action}" />
+                                        <fs:AutoGrid
+                                            Columns="20, Auto, 20*"
+                                            MouseLeftButtonUp="StackPanel_MouseLeftButtonUp"
+                                            Orientation="Horizontal">
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                Kind="BookOpenPageVariant"
+                                                Visibility="{Binding PopupType, ConverterParameter=Page, Converter={c:ItemTypeConverter}}" />
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                Kind="Settings"
+                                                Visibility="{Binding PopupType, ConverterParameter=Setting, Converter={c:ItemTypeConverter}}" />
+                                            <material:PackIcon
+                                                Grid.Column="0"
+                                                Kind="GestureTap"
+                                                Visibility="{Binding PopupType, ConverterParameter=Action, Converter={c:ItemTypeConverter}}" />
 
-                                            <TextBlock Text="{Binding Title}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Title}" />
 
                                             <ToggleButton
-                                                Width="10"
+                                                Grid.Column="2"
+                                                Width="20"
+                                                HorizontalAlignment="Right"
                                                 IsChecked="{Binding IsFavourite}"
                                                 Style="{DynamicResource StarToggleButtonStyle}" />
-                                        </StackPanel>
+                                        </fs:AutoGrid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -116,7 +127,7 @@
                         Grid.Column="2"
                         IsChecked="{Binding SearchBarVisible}"
                         Style="{DynamicResource SearchToggleStyle}"
-                        Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={c:BooleanToVisibilityConverter}}">
+                        Visibility="{Binding IsLoggedIn, Converter={c:BooleanToVisibilityConverter}, Source={x:Static local:ServiceLocator.Instance}}">
                         <material:PackIcon
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -125,9 +136,9 @@
                     </ToggleButton>
                 </Grid>
 
-                <material:PopupBox Grid.Column="3" Visibility="{Binding IsLoggedIn, Source={x:Static local:ServiceLocator.Instance}, Converter={c:BooleanToVisibilityConverter}}">
+                <material:PopupBox Grid.Column="3" Visibility="{Binding IsLoggedIn, Converter={c:BooleanToVisibilityConverter}, Source={x:Static local:ServiceLocator.Instance}}">
                     <ListView>
-                        <Button Command="{Binding LogoutCommand}">Abmelden</Button>
+                        <Button Command="{Binding LogoutCommand}" Content="Abmelden" />
                     </ListView>
                 </material:PopupBox>
             </Grid>
@@ -137,7 +148,7 @@
             x:Name="drawerHost"
             Grid.Row="1"
             Margin="0,0,0,1"
-            IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}">
 
             <material:DrawerHost.LeftDrawerContent>
                 <ListView>
@@ -172,7 +183,7 @@
                                 Stretch="Fill">
 
                                 <Canvas
-                                    Name="Capa_1"
+                                    x:Name="Capa_1"
                                     Canvas.Left="0"
                                     Canvas.Top="0"
                                     Width="512"
@@ -180,13 +191,12 @@
                                     <Canvas.RenderTransform>
                                         <TranslateTransform X="0" Y="0" />
                                     </Canvas.RenderTransform>
-                                    <Canvas.Resources />
 
-                                    <Canvas Name="g75">
-                                        <Canvas Name="g73">
+                                    <Canvas x:Name="g75">
+                                        <Canvas x:Name="g73">
                                             <Path
                                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                                Name="path71"
+                                                x:Name="path71"
                                                 Fill="#000000">
                                                 <Path.Data>
                                                     <PathGeometry Figures="M491.383 0H20.617C9.23 0 0 9.23 0 20.617v470.765C0 502.77 9.23 512 20.617 512h470.765    C502.77 512 512 502.77 512 491.383V20.617C512 9.23 502.77 0 491.383 0z M470.765 470.765H41.235V41.235h429.53V470.765z" FillRule="NonZero" />
@@ -194,11 +204,11 @@
                                             </Path>
                                         </Canvas>
                                     </Canvas>
-                                    <Canvas Name="g81">
-                                        <Canvas Name="g79">
+                                    <Canvas x:Name="g81">
+                                        <Canvas x:Name="g79">
                                             <Rectangle
                                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                                Name="rect77"
+                                                x:Name="rect77"
                                                 Canvas.Left="20.617"
                                                 Canvas.Top="173.187"
                                                 Width="471.452"
@@ -206,11 +216,11 @@
                                                 Fill="#000000" />
                                         </Canvas>
                                     </Canvas>
-                                    <Canvas Name="g87">
-                                        <Canvas Name="g85">
+                                    <Canvas x:Name="g87">
+                                        <Canvas x:Name="g85">
                                             <Rectangle
                                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                                Name="rect83"
+                                                x:Name="rect83"
                                                 Canvas.Left="298.266"
                                                 Canvas.Top="193.804"
                                                 Width="41.235"
@@ -218,11 +228,11 @@
                                                 Fill="#000000" />
                                         </Canvas>
                                     </Canvas>
-                                    <Canvas Name="g93">
-                                        <Canvas Name="g91">
+                                    <Canvas x:Name="g93">
+                                        <Canvas x:Name="g91">
                                             <Rectangle
                                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                                Name="rect89"
+                                                x:Name="rect89"
                                                 Canvas.Left="20.617"
                                                 Canvas.Top="318.196"
                                                 Width="298.266"
@@ -268,7 +278,7 @@
                 DialogContent="{Binding DialogContent, Converter={c:DialogContentConverter}}"
                 IsOpen="{Binding DialogOpened}">
                 <fs:PageTransition
-                    Name="pageContainer"
+                    x:Name="pageContainer"
                     Margin="25"
                     TransitionType="SlideAndFade" />
             </material:DialogHost>
