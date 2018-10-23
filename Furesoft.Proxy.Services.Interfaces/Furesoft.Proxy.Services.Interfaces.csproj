@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="IAuthService.cs" />
     <Compile Include="IDatabaseService.cs" />
-    <Compile Include="IWService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

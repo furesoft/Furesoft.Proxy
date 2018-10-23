@@ -1,8 +1,12 @@
-﻿using System.Net;
+﻿using Furesoft.Proxy.Core;
+using System;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
 using Titanium.Web.Proxy.Http;
+using Titanium.Web.Proxy.Http.Responses;
 using Titanium.Web.Proxy.Models;
 
 namespace Furesoft.Proxy.Service
@@ -20,6 +24,9 @@ namespace Furesoft.Proxy.Service
             proxyServer = new ProxyServer();
 
             proxyServer.CertificateManager.TrustRootCertificate(true);
+            proxyServer.CertificateManager.RootCertificateName = "Furesoft Proxy Certificate";
+            proxyServer.CertificateManager.RootCertificateIssuerName = "Furesoft";
+            proxyServer.CertificateManager.LoadRootCertificate("rootCert.snk", "");
 
             proxyServer.BeforeRequest += OnRequest;
             proxyServer.BeforeResponse += OnResponse;
@@ -83,7 +90,19 @@ namespace Furesoft.Proxy.Service
             }
 
             // ToDo: implement custom filter via regex
-            if (e.WebSession.Request.RequestUri.AbsoluteUri.Contains("tor"))
+            var uri = e.WebSession.Request.RequestUri;
+            
+
+            var filterOps = new FilterOperations();
+
+            filterOps.Add(new Models.Filter()
+            {
+                Name = "lol",
+                Type = Models.FilterType.Contains,
+                Pattern = "Daniel"
+            });
+
+            if (filterOps.IsMatch(filterOps.GetFilters(), uri.AbsoluteUri))
             {
                 //ToDo: implement custom Block Template
                 e.Ok("<!DOCTYPE html>" +
@@ -95,7 +114,7 @@ namespace Furesoft.Proxy.Service
                       "</html>");
             }
             //Redirect example
-            if (e.WebSession.Request.RequestUri.AbsoluteUri.Contains("wikipedia.org"))
+            if (uri.AbsoluteUri.Contains("wikipedia.org"))
             {
                 //ToDo: implement redirection
                 e.Redirect("https://www.paypal.com");
@@ -108,9 +127,9 @@ namespace Furesoft.Proxy.Service
 
             if (e.WebSession.Request.Method == "GET" || e.WebSession.Request.Method == "POST")
             {
-                if (e.WebSession.Response.StatusCode == 200)
+                if (e.WebSession.Response.StatusCode == 200 && e.WebSession.Response.ContentType != null)
                 {
-                    if (e.WebSession.Response.ContentType != null && e.WebSession.Response.ContentType.Trim().ToLower().Contains("text/html"))
+                    if (e.WebSession.Response.ContentType.Trim().ToLower().Contains("text/html"))
                     {
                         byte[] bodyBytes = await e.GetResponseBody();
                         e.SetResponseBody(bodyBytes);

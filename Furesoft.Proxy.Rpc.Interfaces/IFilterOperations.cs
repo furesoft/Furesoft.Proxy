@@ -4,11 +4,11 @@ namespace Furesoft.Proxy.Rpc.Interfaces
 {
     public interface IFilterOperations
     {
-        void Reload();
-
-        bool Add(Filter f);
+        void Add(Filter f);
         bool Remove(Filter f);
-        bool Update(Filter f);
+        void Update(Filter f);
+
+        bool IsMatch(Filter[] fs, string src);
 
         Filter[] GetFilters();
     }

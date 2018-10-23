@@ -24,12 +24,7 @@ namespace Furesoft.Proxy.ViewModels
         {
             LoginCommand = new ActionCommand((cp) =>
             {
-                var wservice = ServiceLocator.Instance.Provider.GetService<IWService>();
-                if (wservice.IsRunning())
-                {
-                    wservice.Stop();
-                }
-
+                
                 ServiceLocator.Instance.IsLoggedIn = true;
                 // Move to next page
                 var container = ServiceLocator.Instance.PageContainer;

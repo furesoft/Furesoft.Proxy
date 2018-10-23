@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace Furesoft.Proxy.Service
 {
@@ -23,8 +22,9 @@ namespace Furesoft.Proxy.Service
         {
             if (eventType == 2)
             {
+#if Release
                 System.Diagnostics.Process.Start(Application.ExecutablePath);
-
+#endif
                 Environment.Exit(0);
                 proxy.Stop();
             }

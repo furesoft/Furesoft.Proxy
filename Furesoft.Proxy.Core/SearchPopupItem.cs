@@ -21,6 +21,7 @@ namespace Furesoft.Proxy.Core
                 _isFav = value;
                 if(value)
                 {
+                    //ToDo: repair
                     CommandUsageProvider.Instance.AddFavorite(Title);
                 }
                 else

@@ -1,6 +1,9 @@
 ﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Models;
+using Furesoft.Proxy.Rpc.Interfaces;
 using Furesoft.Proxy.UI;
 using System.ComponentModel;
+using System.Threading;
 
 namespace Furesoft.Proxy
 {
@@ -9,6 +12,8 @@ namespace Furesoft.Proxy
         public static ServiceLocator Instance = new ServiceLocator();
 
         public ServiceProvider Provider = new ServiceProvider();
+
+        public Filter[] AllFilter;
 
         private bool _loggedIn;
 

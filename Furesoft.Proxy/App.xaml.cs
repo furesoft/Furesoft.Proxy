@@ -1,6 +1,5 @@
 ﻿using Furesoft.Proxy.Core;
-using Furesoft.Proxy.Services;
-using Furesoft.Proxy.Services.Interfaces;
+using Furesoft.Proxy.Rpc.Interfaces;
 using System;
 using System.Windows;
 using ToastNotifications.Messages;
@@ -18,8 +17,6 @@ namespace Furesoft.Proxy
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            //ToDo: Change to Rpc Service
-            ServiceLocator.Instance.Provider.AddService<IWService>(new WService());
             NotificationManager.Init();
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
