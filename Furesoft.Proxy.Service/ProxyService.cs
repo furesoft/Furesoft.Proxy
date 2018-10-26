@@ -89,10 +89,8 @@ namespace Furesoft.Proxy.Service
                 e.UserData = e.WebSession.Request;
             }
 
-            // ToDo: implement custom filter via regex
             var uri = e.WebSession.Request.RequestUri;
             
-
             var filterOps = new FilterOperations();
 
             filterOps.Add(new Models.Filter()

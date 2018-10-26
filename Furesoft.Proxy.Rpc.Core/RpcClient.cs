@@ -3,7 +3,6 @@ using Furesoft.Proxy.Rpc.Core.Messages;
 using System;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Furesoft.Proxy.Rpc.Core
 {
@@ -27,9 +26,16 @@ namespace Furesoft.Proxy.Rpc.Core
 
         private void Sender_DataReceived(object sender, MemoryMappedDataReceivedEventArgs e)
         {
-            var response = (RpcMethodAwnser)RpcServices.Deserialize(e.Data);
+            var response = RpcServices.Deserialize(e.Data);
 
-            ReturnValue = response.ReturnValue;
+            if (response is RpcMethodAwnser awnser)
+            {
+                ReturnValue = awnser.ReturnValue;
+            }
+            else if (response is RpcExceptionMessage ex)
+            {
+                throw new RpcException(ex.Interface, ex.Name, new Exception(ex.Message));
+            }
 
             mre.Set();
         }
@@ -60,12 +66,6 @@ namespace Furesoft.Proxy.Rpc.Core
             where Interface : class
         {
             CallMethod<Interface>($"set_{propname}", value);
-        }
-
-        public object GetProperty<Interface>(string propertyname)
-            where Interface : class
-        {
-            return CallMethod<Interface>($"get_{propertyname}");
         }
 
         public void SetIndex<Interface>(object[] indizes, object value)
@@ -100,6 +100,12 @@ namespace Furesoft.Proxy.Rpc.Core
             mre.WaitOne();
 
             return ReturnValue;
+        }
+
+        public object GetProperty<Interface>(string propertyname)
+            where Interface : class
+        {
+            return CallMethod<Interface>($"get_{propertyname}");
         }
 
         public dynamic Bind<Interface>()

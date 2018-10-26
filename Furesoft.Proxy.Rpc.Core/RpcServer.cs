@@ -14,11 +14,10 @@ namespace Furesoft.Proxy.Rpc.Core
 
         public RpcServer(string name)
         {
-            listener = new MemoryMappedFileCommunicator(name, 50000)
-            {
-                WritePosition = 0,
-                ReadPosition = 2500
-            };
+            listener = new MemoryMappedFileCommunicator(name, 50000);
+
+            listener.WritePosition = 0;
+            listener.ReadPosition = 2500;
 
             listener.DataReceived += Listener_DataReceived;
         }
@@ -125,6 +124,27 @@ namespace Furesoft.Proxy.Rpc.Core
             return results;
         }
 
+        object InvokeMethod(MethodInfo p, RpcMethod method, params object[] args)
+        {
+            object r = null;
+
+            r = p.Invoke(_binds[method.Interface], args);
+
+            if (r is Exception ex)
+            {
+                listener.Write(
+                    RpcServices.Serialize(
+                        new RpcExceptionMessage(
+                            method.Interface,
+                            method.Name,
+                            ex.Message
+                    ))
+               );
+            }
+
+            return r;
+        }
+
         private void Listener_DataReceived(object sender, MemoryMappedDataReceivedEventArgs e)
         {
             var method = RpcServices.Deserialize(e.Data);
@@ -140,7 +160,8 @@ namespace Furesoft.Proxy.Rpc.Core
                     if (ri.Name == "get_Index")
                     {
                         var p = GetIndexProperties(_binds[method.Interface]).First();
-                        r = p.Invoke(_binds[method.Interface], ri.Indizes);
+
+                        r = InvokeMethod(p, method, ri.Indizes);
                     }
                     else
                     {
@@ -149,7 +170,7 @@ namespace Furesoft.Proxy.Rpc.Core
                         args.AddRange(ri.Indizes);
                         args.Add(ri.Value);
 
-                        p.Invoke(_binds[method.Interface], args.ToArray());
+                        InvokeMethod(p, method, args.ToArray());
                     }
                 }
                 else
@@ -160,11 +181,11 @@ namespace Furesoft.Proxy.Rpc.Core
                     {
                         r = null;
 
-                        m.Invoke(_binds[method.Interface], method.Args.ToArray());
+                        InvokeMethod(m, method, method.Args.ToArray());
                     }
                     else
                     {
-                        r = m.Invoke(_binds[method.Interface], method.Args.ToArray());
+                        r = InvokeMethod(m, method, method.Args.ToArray());
                     }
                 }
 

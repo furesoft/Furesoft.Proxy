@@ -145,7 +145,6 @@ namespace Furesoft.Proxy
                     break;
 
                 case PopupItemType.Action:
-                    //ToDo: repair dialog not clickable
                     var c = ((MainViewModel)DataContext);
 
                     SearchableCommandRepository.Instance.ExecuteCommand(item.Title, c);
