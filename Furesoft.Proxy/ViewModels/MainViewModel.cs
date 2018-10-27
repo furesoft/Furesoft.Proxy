@@ -1,4 +1,5 @@
 ﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.UI;
 using System;
@@ -13,6 +14,7 @@ namespace Furesoft.Proxy.ViewModels
         public ICommand LogoutCommand { get; set; }
         public PageTransition TransitionContainer { get; set; }
         public ObservableCollection<SearchPopupItem> SearchPopupSource { get; set; } = new ObservableCollection<SearchPopupItem>();
+        public ObservableCollection<Filter> Filters = new ObservableCollection<Filter>();
 
         #region Properties
         private string _searchText;
@@ -63,6 +65,8 @@ namespace Furesoft.Proxy.ViewModels
 
                 TransitionContainer.ShowPage(new LoginPage());
             });
+
+            Filters.Add(new Filter() { Name = "test", Pattern = "test", Type = FilterType.Contains });
         }
     }
 }

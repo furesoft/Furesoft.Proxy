@@ -35,10 +35,6 @@ namespace Furesoft.Proxy
 
             var ops = ServiceLocator.Instance.RpcClient.BindAsync<IFilterOperations>();
 
-            await (Task)ops.Add(new Filter() {
-                 Type = FilterType.Contains,
-                 Pattern = "hello"
-            });
 
             //Collect searchable commands
             CommandCollector.Collect(typeof(MainWindow).Assembly);

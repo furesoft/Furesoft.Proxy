@@ -20,22 +20,21 @@
                 Text="Filter" />
         </StackPanel>
 
-        <ListBox ItemsSource="{Binding Filters}" />
-
-        <Button
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Command="{x:Static material:DialogHost.OpenDialogCommand}"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            ToolTip="Add Filter">
-            <material:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Plus" />
-        </Button>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListBox Height="50" ItemsSource="{Binding Filters}" />
+            <ListBoxItem>hello</ListBoxItem>
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                Command="{x:Static material:DialogHost.OpenDialogCommand}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                ToolTip="Add Filter">
+                <material:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Plus" />
+            </Button>
+        </StackPanel>
 
 
 

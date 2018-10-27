@@ -129,6 +129,7 @@
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\SearchUpdatesCommand.cs" />
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\ComboBoxToEnumConverter.cs" />
     <Compile Include="Converter\DialogContentConverter.cs" />
     <Compile Include="Converter\ItemTypeConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />

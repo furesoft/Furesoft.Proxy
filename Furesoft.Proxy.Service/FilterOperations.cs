@@ -15,9 +15,10 @@ namespace Furesoft.Proxy.Service
             col = ServiceLocator.db.GetCollection<Filter>("Filter");
         }
 
-        public void Add(Filter f)
+        public bool Add(Filter f)
         {
-            col.Insert(f);
+            if (col.FindOne(Query.EQ("Name", f.Name)) != null) return false;
+            else { col.Insert(f); return true; }
         }
 
         public Filter[] GetFilters()
@@ -52,7 +53,7 @@ namespace Furesoft.Proxy.Service
 
         public bool Remove(Filter f)
         {
-            if(col.FindById(f.Id) != null)
+            if(col.FindOne(Query.EQ("Name", f.Name)) != null)
             {
                 col.Delete(Query.EQ("Id", f.Id));
             }
@@ -60,9 +61,10 @@ namespace Furesoft.Proxy.Service
             return false;
         }
 
-        public void Update(Filter f)
+        public bool Update(Filter f)
         {
-            col.Update(f);
+            if (col.FindOne(Query.EQ("Name", f.Name)) != null) return false;
+            else { col.Update(f); return true; }
         }
     }
 }

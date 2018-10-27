@@ -12,9 +12,9 @@ namespace Furesoft.Proxy.Models
 
     public enum FilterType
     {
-        Regex,
-        Contains,
         Starts,
-        Ends
+        Ends,
+        Contains,
+        Regex,
     }
 }
