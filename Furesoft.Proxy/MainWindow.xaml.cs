@@ -1,11 +1,14 @@
 ﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Pages;
+using Furesoft.Proxy.Rpc.Interfaces;
 using Furesoft.Proxy.UI;
 using Furesoft.Proxy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,14 +22,23 @@ namespace Furesoft.Proxy
             Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = new MainViewModel() { TransitionContainer = pageContainer };
 
             var context = (MainViewModel)DataContext;
             var container = context.TransitionContainer;
 
+            ServiceLocator.Instance.RpcClient.Start();
+
             ServiceLocator.Instance.PageContainer = container;
+
+            var ops = ServiceLocator.Instance.RpcClient.BindAsync<IFilterOperations>();
+
+            await (Task)ops.Add(new Filter() {
+                 Type = FilterType.Contains,
+                 Pattern = "hello"
+            });
 
             //Collect searchable commands
             CommandCollector.Collect(typeof(MainWindow).Assembly);

@@ -101,7 +101,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="rootCert.snk">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +112,10 @@
     <ProjectReference Include="..\Furesoft.Proxy.Models\Furesoft.Proxy.Models.csproj">
       <Project>{9f79b23f-0f02-4030-b80a-31d4307a9973}</Project>
       <Name>Furesoft.Proxy.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Furesoft.Proxy.Rpc.Core\Furesoft.Proxy.Rpc.Core.csproj">
+      <Project>{C96E196D-184B-4D15-A42C-7C443E975A8E}</Project>
+      <Name>Furesoft.Proxy.Rpc.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Furesoft.Proxy.Rpc.Interfaces\Furesoft.Proxy.Rpc.Interfaces.csproj">
       <Project>{d9e5fbaf-ca6d-4b81-9436-ac32548e0fdb}</Project>

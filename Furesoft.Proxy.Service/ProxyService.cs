@@ -1,4 +1,6 @@
 ﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Rpc.Core;
+using Furesoft.Proxy.Rpc.Interfaces;
 using System;
 using System.IO;
 using System.Net;
@@ -14,6 +16,7 @@ namespace Furesoft.Proxy.Service
     public partial class ProxyService
     {
         private ProxyServer proxyServer;
+        private RpcServer rpcServer = new RpcServer("Furesoft.Proxy.Channel");
 
         public ProxyService()
         {
@@ -22,6 +25,10 @@ namespace Furesoft.Proxy.Service
         public void Start()
         {
             proxyServer = new ProxyServer();
+
+            //rpc init
+            rpcServer.Bind<IFilterOperations>(new FilterOperations());
+            rpcServer.Start();
 
             proxyServer.CertificateManager.TrustRootCertificate(true);
             proxyServer.CertificateManager.RootCertificateName = "Furesoft Proxy Certificate";
@@ -92,14 +99,7 @@ namespace Furesoft.Proxy.Service
             var uri = e.WebSession.Request.RequestUri;
             
             var filterOps = new FilterOperations();
-
-            filterOps.Add(new Models.Filter()
-            {
-                Name = "lol",
-                Type = Models.FilterType.Contains,
-                Pattern = "Daniel"
-            });
-
+            
             if (filterOps.IsMatch(filterOps.GetFilters(), uri.AbsoluteUri))
             {
                 //ToDo: implement custom Block Template

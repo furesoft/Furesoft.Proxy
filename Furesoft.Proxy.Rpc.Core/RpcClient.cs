@@ -3,6 +3,7 @@ using Furesoft.Proxy.Rpc.Core.Messages;
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Furesoft.Proxy.Rpc.Core
 {
@@ -62,6 +63,30 @@ namespace Furesoft.Proxy.Rpc.Core
             return ReturnValue;
         }
 
+        public T CallMethod<Interface, T>(string methodname, params object[] args)
+            where Interface : class
+        {
+            return (T)CallMethod<Interface>(methodname, args);
+        }
+
+        public Task<object> CallMethodAsync<Interface>(string methodname, params object[] args)
+            where Interface : class
+        {
+            return Task.Run(() =>
+            {
+                return CallMethod<Interface>(methodname, args);
+            });
+        }
+        public Task<T> CallMethodAsync<Interface, T>(string methodname, params object[] args)
+            where Interface : class
+        {
+            return Task.Run(() =>
+            {
+                return CallMethod<Interface, T>(methodname, args);
+            });
+        }
+
+
         public void SetProperty<Interface>(string propname, object value)
             where Interface : class
         {
@@ -111,7 +136,13 @@ namespace Furesoft.Proxy.Rpc.Core
         public dynamic Bind<Interface>()
             where Interface : class
         {
-            return new InterfaceProxy<Interface>(this);
+            return new InterfaceProxy<Interface>(this, false);
+        }
+
+        public dynamic BindAsync<Interface>()
+            where Interface : class
+        {
+            return new InterfaceProxy<Interface>(this, true);
         }
 
         public void Dispose()

@@ -1,5 +1,6 @@
 ﻿using Furesoft.Proxy.Core;
 using Furesoft.Proxy.Models;
+using Furesoft.Proxy.Rpc.Core;
 using Furesoft.Proxy.Rpc.Interfaces;
 using Furesoft.Proxy.UI;
 using System.ComponentModel;
@@ -12,6 +13,8 @@ namespace Furesoft.Proxy
         public static ServiceLocator Instance = new ServiceLocator();
 
         public ServiceProvider Provider = new ServiceProvider();
+
+        public RpcClient RpcClient = new RpcClient("Furesoft.Proxy.Channel");
 
         public Filter[] AllFilter;
 
