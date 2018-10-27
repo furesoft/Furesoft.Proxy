@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1">
@@ -58,7 +58,7 @@
             <ComboBox
                 Grid.Row="1"
                 Grid.Column="1"
-                Margin="7"
+                Margin="3"
                 SelectedIndex="{Binding Filter.Type, Converter={c:ComboBoxToEnumConverter}}">
                 <ComboBoxItem>StartsWith</ComboBoxItem>
                 <ComboBoxItem>EndsWith</ComboBoxItem>
@@ -79,7 +79,6 @@
 
         <StackPanel
             Grid.Row="2"
-            Height="50"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Orientation="Horizontal">

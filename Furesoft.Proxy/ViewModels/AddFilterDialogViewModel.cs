@@ -29,7 +29,7 @@ namespace Furesoft.Proxy.ViewModels
             OkCommand = new AsyncActionCommand(async _ =>
             {
                 //ToDo: add filter command to database through rpc service
-                NotificationManager.notifier.ShowInformation("Add Filter is not implemented");
+                NotificationManager.notifier.ShowSuccess("Filter added successfully");
 
                 var result = await ServiceLocator.Instance.RpcClient.CallMethodAsync<IFilterOperations>("Add", Filter);
                 Debug.WriteLine(result);

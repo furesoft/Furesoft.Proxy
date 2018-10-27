@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Furesoft.Proxy.ViewModels;
+using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Pages
 {
@@ -7,6 +8,16 @@ namespace Furesoft.Proxy.Pages
         public FilterPage()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            foreach (var item in ServiceLocator.Instance.AllFilter)
+            {
+                var ctx = (MainViewModel)DataContext;
+
+                ctx.Filters.Add(item);
+            }
         }
     }
 }
