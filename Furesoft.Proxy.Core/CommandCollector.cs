@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Furesoft.Proxy.Core.Attributes;
+using System;
 using System.Reflection;
 using System.Windows.Input;
 
@@ -22,17 +23,6 @@ namespace Furesoft.Proxy.Core
                     CommandUsageProvider.Instance.Add(att.Name);
                 }
             }
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Class)]
-    public class SearchableCommandAttribute : Attribute
-    {
-        public string Name { get; set; }
-
-        public SearchableCommandAttribute(string name)
-        {
-            Name = name;
         }
     }
 }

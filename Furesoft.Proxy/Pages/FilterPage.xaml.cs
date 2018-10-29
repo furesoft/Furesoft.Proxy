@@ -1,4 +1,8 @@
-﻿using Furesoft.Proxy.ViewModels;
+﻿using Furesoft.Proxy.Core;
+using Furesoft.Proxy.Dialogs;
+using Furesoft.Proxy.Models;
+using Furesoft.Proxy.Rpc.Interfaces;
+using Furesoft.Proxy.ViewModels;
 using System.Windows.Controls;
 
 namespace Furesoft.Proxy.Pages
@@ -10,13 +14,22 @@ namespace Furesoft.Proxy.Pages
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            foreach (var item in ServiceLocator.Instance.AllFilter)
-            {
-                var ctx = (MainViewModel)DataContext;
+            var ops = ServiceLocator.Instance.RpcClient.BindAsync<IFilterOperations>();
 
-                ctx.Filters.Add(item);
+            ServiceLocator.Instance.AllFilter = new FilterCollection(filterLb);
+            ServiceLocator.Instance.AllFilter.AddRange(await ops.GetFilters());
+        }
+
+        private void filterLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var f = e.AddedItems[0];
+
+            if(f is Filter filter)
+            {
+                CommandContext.AddContext(CommandContextIds.FilterSelected);
+                ServiceLocator.Instance.SelectedFilter = filter;
             }
         }
     }

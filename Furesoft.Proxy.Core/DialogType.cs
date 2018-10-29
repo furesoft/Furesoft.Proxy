@@ -5,6 +5,7 @@
         AddFilter,
         AddFilterGroup,
         AddRedirect,
-        Empty
+        Empty,
+        ChangeFilter
     }
 }

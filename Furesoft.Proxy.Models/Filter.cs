@@ -8,6 +8,11 @@ namespace Furesoft.Proxy.Models
         public string Pattern { get; set; }
         public int TemplateID { get; set; }
         public FilterType Type { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public enum FilterType

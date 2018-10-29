@@ -280,7 +280,7 @@
                 <fs:PageTransition
                     x:Name="pageContainer"
                     Margin="25"
-                    TransitionType="SlideAndFade" />
+                    TransitionType="Slide" />
             </material:DialogHost>
         </material:DrawerHost>
     </Grid>

@@ -126,15 +126,22 @@
     <Compile Include="Commands\AddFilterCommand.cs" />
     <Compile Include="Commands\AddFilterGroupCommand.cs" />
     <Compile Include="Commands\AddRedirectCommand.cs" />
+    <Compile Include="Commands\DeleteFilterCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\OpenTestPageCommand.cs" />
     <Compile Include="Commands\SearchUpdatesCommand.cs" />
+    <Compile Include="Commands\UpdateFilterCommand.cs" />
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\ComboBoxToEnumConverter.cs" />
     <Compile Include="Converter\DialogContentConverter.cs" />
     <Compile Include="Converter\ItemTypeConverter.cs" />
+    <Compile Include="Converter\NotNullConverter.cs" />
     <Compile Include="Converter\PageIndexConverter.cs" />
     <Compile Include="Dialogs\AddFilterDialog.xaml.cs">
       <DependentUpon>AddFilterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChangeFilterDialog.xaml.cs">
+      <DependentUpon>ChangeFilterDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Pages\FilterGroupsPage.xaml.cs">
@@ -159,9 +166,14 @@
     <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Utils\MD5.cs" />
     <Compile Include="ViewModels\AddFilterDialogViewModel.cs" />
+    <Compile Include="ViewModels\ChangeFilterDialogViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Dialogs\AddFilterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChangeFilterDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,7 +269,7 @@
       <Name>Furesoft.Proxy.Rpc.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Furesoft.Proxy.Services.Interfaces\Furesoft.Proxy.Services.Interfaces.csproj">
-      <Project>{5E3461A1-0E43-4C18-8022-875836106727}</Project>
+      <Project>{5e3461a1-0e43-4c18-8022-875836106727}</Project>
       <Name>Furesoft.Proxy.Services.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Furesoft.Proxy.UI\Furesoft.Proxy.UI.csproj">

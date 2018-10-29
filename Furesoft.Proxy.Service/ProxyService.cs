@@ -3,6 +3,7 @@ using Furesoft.Proxy.Rpc.Core;
 using Furesoft.Proxy.Rpc.Interfaces;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Titanium.Web.Proxy;
@@ -16,7 +17,7 @@ namespace Furesoft.Proxy.Service
     public partial class ProxyService
     {
         private ProxyServer proxyServer;
-        private RpcServer rpcServer = new RpcServer("Furesoft.Proxy.Channel");
+        private RpcServer rpcServer = new RpcServer("Furesoft.ProxyChannel");
 
         public ProxyService()
         {
@@ -100,7 +101,7 @@ namespace Furesoft.Proxy.Service
             
             var filterOps = new FilterOperations();
             
-            if (filterOps.IsMatch(filterOps.GetFilters(), uri.AbsoluteUri))
+            if (filterOps.IsMatch(filterOps.GetFilters().ToArray(), uri.AbsoluteUri))
             {
                 //ToDo: implement custom Block Template
                 e.Ok("<!DOCTYPE html>" +
@@ -111,6 +112,13 @@ namespace Furesoft.Proxy.Service
                       "</body>" +
                       "</html>");
             }
+
+            // Test Page
+            if(uri.AbsoluteUri.Contains("furesoft.proxy.test"))
+            {
+                e.Ok("<html><h1>Furesoft Proxy Test Page</h1><p>All works fine!</p></html>");
+            }
+
             //Redirect example
             if (uri.AbsoluteUri.Contains("wikipedia.org"))
             {

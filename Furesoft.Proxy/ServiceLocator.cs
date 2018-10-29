@@ -3,8 +3,8 @@ using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Rpc.Core;
 using Furesoft.Proxy.Rpc.Interfaces;
 using Furesoft.Proxy.UI;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Threading;
 
 namespace Furesoft.Proxy
 {
@@ -14,9 +14,10 @@ namespace Furesoft.Proxy
 
         public ServiceProvider Provider = new ServiceProvider();
 
-        public RpcClient RpcClient = new RpcClient("Furesoft.Proxy.Channel");
+        public RpcClient RpcClient = new RpcClient("Furesoft.ProxyChannel");
 
-        public Filter[] AllFilter;
+        public FilterCollection AllFilter;
+        public Filter SelectedFilter;
 
         private bool _loggedIn;
 

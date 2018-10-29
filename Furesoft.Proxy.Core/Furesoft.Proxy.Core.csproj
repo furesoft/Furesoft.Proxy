@@ -48,19 +48,24 @@
   <ItemGroup>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AttachedProperties\FocusAttachedProperty.cs" />
+    <Compile Include="Attributes\KeyBindingCommandAttribute.cs" />
+    <Compile Include="Attributes\MouseBindingCommandAttribute.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="CommandCollector.cs" />
+    <Compile Include="CommandContext.cs" />
     <Compile Include="CommandUsageProvider.cs" />
     <Compile Include="DialogType.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="InputBindingCollector.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IServiceProviderExtensions.cs" />
     <Compile Include="MimeMap.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Attributes\SearchableCommandAttribute.cs" />
     <Compile Include="SearchableCommandRepository.cs" />
     <Compile Include="SearchPopupItem.cs" />
     <Compile Include="ServiceProvider.cs" />

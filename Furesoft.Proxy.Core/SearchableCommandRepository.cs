@@ -89,6 +89,8 @@ namespace Furesoft.Proxy.Core
                 return _storage.Keys.ToArray();
             }
         }
+
+        public Action<object> OpenCustomDialog { get; set; }
     }
 
     public class CommandRepository : MarkupExtension

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furesoft.Proxy.Service", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furesoft.Proxy.Core", "Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj", "{04D5D52D-38F4-4BA3-9E62-6E0E577DFDF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furesoft.Proxy.Services.Interfaces", "Furesoft.Proxy.Services.Interfaces\Furesoft.Proxy.Services.Interfaces.csproj", "{5E3461A1-0E43-4C18-8022-875836106727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{04D5D52D-38F4-4BA3-9E62-6E0E577DFDF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04D5D52D-38F4-4BA3-9E62-6E0E577DFDF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04D5D52D-38F4-4BA3-9E62-6E0E577DFDF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3461A1-0E43-4C18-8022-875836106727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3461A1-0E43-4C18-8022-875836106727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3461A1-0E43-4C18-8022-875836106727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3461A1-0E43-4C18-8022-875836106727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

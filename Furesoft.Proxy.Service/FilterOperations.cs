@@ -1,7 +1,6 @@
 ﻿using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Rpc.Interfaces;
 using LiteDB;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Furesoft.Proxy.Service
@@ -21,9 +20,9 @@ namespace Furesoft.Proxy.Service
             else { col.Insert(f); return true; }
         }
 
-        public Filter[] GetFilters()
+        public FilterCollection GetFilters()
         {
-            return col.FindAll().ToArray();
+            return new FilterCollection(col.FindAll());
         }
 
         public bool IsMatch(Filter[] fs, string src)
@@ -56,6 +55,8 @@ namespace Furesoft.Proxy.Service
             if(col.FindOne(Query.EQ("Name", f.Name)) != null)
             {
                 col.Delete(Query.EQ("Id", f.Id));
+
+                return true;
             }
 
             return false;

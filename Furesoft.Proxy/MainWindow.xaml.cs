@@ -1,5 +1,4 @@
 ﻿using Furesoft.Proxy.Core;
-using Furesoft.Proxy.Models;
 using Furesoft.Proxy.Pages;
 using Furesoft.Proxy.Rpc.Interfaces;
 using Furesoft.Proxy.UI;
@@ -7,8 +6,6 @@ using Furesoft.Proxy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,7 +21,8 @@ namespace Furesoft.Proxy
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new MainViewModel() { TransitionContainer = pageContainer };
+            DataContext = MainViewModel.Instance;
+            MainViewModel.Instance.TransitionContainer = pageContainer;
 
             var context = (MainViewModel)DataContext;
             var container = context.TransitionContainer;
@@ -35,10 +33,23 @@ namespace Furesoft.Proxy
 
             var ops = ServiceLocator.Instance.RpcClient.BindAsync<IFilterOperations>();
 
-            ServiceLocator.Instance.AllFilter = await ops.GetFilters();
+           // ServiceLocator.Instance.AllFilter = await ops.GetFilters();
 
             //Collect searchable commands
             CommandCollector.Collect(typeof(MainWindow).Assembly);
+            //Collect all Input Bindings
+            InputBindingCollector.Collect(typeof(MainWindow).Assembly);
+
+            //apply all input bindings
+            InputBindingCollector.ApplyGesturesTo(this);
+            
+            SearchableCommandRepository.Instance.OpenDialog = new Action<string>((_) =>
+            {
+                var c = MainViewModel.Instance;
+
+                c.DialogContent = GetDialogItem(_);
+                c.DialogOpened = true;
+            });
 
             container.ShowPage(new LoginPage());
         }
@@ -58,6 +69,7 @@ namespace Furesoft.Proxy
             switch (tb)
             {
                 case "Filter":
+                    CommandContext.SetContext(CommandContextIds.FilterPage);
                     container.ShowPage(new FilterPage());
                     break;
 
@@ -94,11 +106,7 @@ namespace Furesoft.Proxy
             c.SearchPopupSource.Clear();
             CreatePopupItem(c, sites, PopupItemType.Page);
 
-            SearchableCommandRepository.Instance.OpenDialog = new Action<string>((_) =>
-            {
-                c.DialogContent = GetDialogItem(_);
-                c.DialogOpened = true;
-            });
+            
 
             CreatePopupItem(c, SearchableCommandRepository.Instance.CommandNames, PopupItemType.Action);
             CreatePopupItem(c, new[] { "Change Password" }, PopupItemType.Setting);
@@ -177,6 +185,8 @@ namespace Furesoft.Proxy
                     return DialogType.AddFilterGroup;
                 case "Add Redirect":
                     return DialogType.AddRedirect;
+                case "Change Filter":
+                    return DialogType.ChangeFilter;
 
                 default:
                     break;

@@ -1,4 +1,5 @@
 ﻿using Furesoft.Proxy.Models;
+using System.Collections.ObjectModel;
 
 namespace Furesoft.Proxy.Rpc.Interfaces
 {
@@ -10,6 +11,6 @@ namespace Furesoft.Proxy.Rpc.Interfaces
 
         bool IsMatch(Filter[] fs, string src);
 
-        Filter[] GetFilters();
+        FilterCollection GetFilters();
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace Furesoft.Proxy.Core
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : FrameworkElement, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

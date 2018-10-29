@@ -20,6 +20,8 @@ namespace Furesoft.Proxy.Converter
                 {
                     case DialogType.AddFilter:
                         return new AddFilterDialog();
+                    case DialogType.ChangeFilter:
+                        return new ChangeFilterDialog();
                     case DialogType.AddFilterGroup:
                         break;
                     case DialogType.AddRedirect:
@@ -29,7 +31,7 @@ namespace Furesoft.Proxy.Converter
                 }
             }
 
-            return new AddFilterDialog();
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
