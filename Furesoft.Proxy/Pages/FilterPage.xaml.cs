@@ -24,7 +24,7 @@ namespace Furesoft.Proxy.Pages
 
         private void filterLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var f = e.AddedItems[0];
+            var f = filterLb.SelectedItem;
 
             if(f is Filter filter)
             {

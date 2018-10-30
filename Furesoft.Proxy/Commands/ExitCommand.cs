@@ -1,5 +1,4 @@
-﻿using Furesoft.Proxy.Core;
-using Furesoft.Proxy.Core.Attributes;
+﻿using Furesoft.Proxy.Core.Attributes;
 using System;
 using System.Windows;
 using System.Windows.Input;

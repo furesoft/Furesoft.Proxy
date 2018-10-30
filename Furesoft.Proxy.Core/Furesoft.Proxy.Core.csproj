@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AttachedProperties\FocusAttachedProperty.cs" />
+    <Compile Include="Attributes\CommandContextAttribute.cs" />
     <Compile Include="Attributes\KeyBindingCommandAttribute.cs" />
     <Compile Include="Attributes\MouseBindingCommandAttribute.cs" />
     <Compile Include="BaseModel.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="CommandCollector.cs" />
     <Compile Include="CommandContext.cs" />
     <Compile Include="CommandUsageProvider.cs" />
+    <Compile Include="ContextCommand.cs" />
     <Compile Include="DialogType.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Extensions.cs" />

@@ -43,6 +43,7 @@ namespace Furesoft.Proxy.Core
             }
         }
 
+
         private static void CollectAttribute<Att>(Assembly a, Action<Att, ICommand> callback)
             where Att : Attribute
         {
