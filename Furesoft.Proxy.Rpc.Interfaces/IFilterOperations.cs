@@ -1,5 +1,5 @@
 ﻿using Furesoft.Proxy.Models;
-using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Furesoft.Proxy.Rpc.Interfaces
 {

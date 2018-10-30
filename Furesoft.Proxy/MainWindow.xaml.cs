@@ -31,7 +31,7 @@ namespace Furesoft.Proxy
 
             ServiceLocator.Instance.PageContainer = container;
 
-            var ops = ServiceLocator.Instance.RpcClient.BindAsync<IFilterOperations>();
+            var ops = ServiceLocator.Instance.RpcClient.Bind<IFilterOperations>();
 
            // ServiceLocator.Instance.AllFilter = await ops.GetFilters();
 

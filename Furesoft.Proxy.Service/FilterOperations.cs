@@ -2,6 +2,7 @@
 using Furesoft.Proxy.Rpc.Interfaces;
 using LiteDB;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Furesoft.Proxy.Service
 {
@@ -23,6 +24,11 @@ namespace Furesoft.Proxy.Service
         public FilterCollection GetFilters()
         {
             return new FilterCollection(col.FindAll());
+        }
+
+        public Task<FilterCollection> GetFiltersAsync()
+        {
+            return Task.FromResult(GetFilters());
         }
 
         public bool IsMatch(Filter[] fs, string src)

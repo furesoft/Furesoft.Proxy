@@ -9,19 +9,15 @@ namespace Furesoft.Proxy.Rpc.Core
     {
         private RpcClient rpcClient;
 
-        public bool IsAsync { get; }
 
-        public InterfaceProxy(RpcClient rpcClient, bool isAsync)
+        public InterfaceProxy(RpcClient rpcClient)
         {
             this.rpcClient = rpcClient;
-            IsAsync = isAsync;
         }
 
         public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)
         {
-            result = Call(() =>
-                rpcClient.CallMethod<Interface>(binder.Name, args)
-            );
+            result = rpcClient.CallMethod<Interface>(binder.Name, args);
 
             return true;
         }
@@ -44,7 +40,7 @@ namespace Furesoft.Proxy.Rpc.Core
 
         public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
         {
-            result = Call(() => rpcClient.GetIndex<Interface>(indexes)).Result;
+            result = Call(() => rpcClient.GetIndex<Interface>(indexes));
 
             return true;
         }
@@ -58,28 +54,13 @@ namespace Furesoft.Proxy.Rpc.Core
             return true;
         }
 
-        private Task Run(Action act)
+        public void Run(Action act)
         {
-            if (IsAsync)
-            {
-                return Task.Run(act);
-            }
-            else
-            {
-                act();
-                return Task.FromResult(0);
-            }
+            act();
         }
-        private Task<object> Call(Func<object> act)
+        public T Call<T>(Func<T> act)
         {
-            if (IsAsync)
-            {
-                return Task.Run(act);
-            }
-            else
-            {
-                return Task.FromResult(act());
-            }
+            return act();
         }
     }
 }

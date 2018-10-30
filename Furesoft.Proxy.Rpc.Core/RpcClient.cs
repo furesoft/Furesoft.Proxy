@@ -1,5 +1,6 @@
 ﻿using Furesoft.Proxy.Rpc.Core.Communicator;
 using Furesoft.Proxy.Rpc.Core.Messages;
+using ImpromptuInterface;
 using System;
 using System.Linq;
 using System.Threading;
@@ -133,17 +134,19 @@ namespace Furesoft.Proxy.Rpc.Core
             return CallMethod<Interface>($"get_{propertyname}");
         }
 
-        public dynamic Bind<Interface>()
+        public dynamic BindDynamic<Interface>()
             where Interface : class
         {
-            return new InterfaceProxy<Interface>(this, false);
+            return new InterfaceProxy<Interface>(this);
         }
 
-        public dynamic BindAsync<Interface>()
+        public Interface Bind<Interface>()
             where Interface : class
         {
-            return new InterfaceProxy<Interface>(this, true);
+            return Impromptu.ActLike<Interface>(new InterfaceProxy<Interface>(this));
         }
+
+      
 
         public void Dispose()
         {
