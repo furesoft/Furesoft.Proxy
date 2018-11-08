@@ -8,8 +8,7 @@ namespace Furesoft.Proxy.Rpc.Core
         where Interface : class
     {
         private RpcClient rpcClient;
-
-
+        
         public InterfaceProxy(RpcClient rpcClient)
         {
             this.rpcClient = rpcClient;

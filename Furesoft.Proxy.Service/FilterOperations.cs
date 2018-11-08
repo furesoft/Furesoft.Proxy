@@ -2,7 +2,6 @@
 using Furesoft.Proxy.Rpc.Interfaces;
 using LiteDB;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Furesoft.Proxy.Service
 {
@@ -15,6 +14,8 @@ namespace Furesoft.Proxy.Service
             col = ServiceLocator.db.GetCollection<Filter>("Filter");
         }
 
+        public bool this[bool b] => !b;
+
         public bool Add(Filter f)
         {
             if (col.FindOne(Query.EQ("Name", f.Name)) != null) return false;
@@ -24,11 +25,6 @@ namespace Furesoft.Proxy.Service
         public FilterCollection GetFilters()
         {
             return new FilterCollection(col.FindAll());
-        }
-
-        public Task<FilterCollection> GetFiltersAsync()
-        {
-            return Task.FromResult(GetFilters());
         }
 
         public bool IsMatch(Filter[] fs, string src)

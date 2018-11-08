@@ -2,6 +2,7 @@
 using Furesoft.Proxy.Rpc.Core;
 using Furesoft.Proxy.Rpc.Interfaces;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -81,7 +82,7 @@ namespace Furesoft.Proxy.Service
             }
         }
 
-        public static async Task OnRequest(object sender, SessionEventArgs e)
+        public async Task OnRequest(object sender, SessionEventArgs e)
         {
             var requestHeaders = e.WebSession.Request.Headers;
 
@@ -101,6 +102,31 @@ namespace Furesoft.Proxy.Service
             
             var filterOps = new FilterOperations();
             
+            
+
+            // Test Page
+            if(uri.AbsoluteUri.Contains("furesoft.proxy.test"))
+            {
+                e.Ok("<html><h1>Furesoft Proxy Test Page</h1><p>All works fine!</p></html>");
+            }
+            if(uri.AbsoluteUri.Contains("test.redirect"))
+            {
+
+                HttpWebRequest http = WebRequest.CreateHttp("http://www.google.com" + uri.AbsolutePath);
+
+                var respone = await http.GetResponseAsync();
+
+                e.WebSession.Response.ContentLength = respone.ContentLength;
+                e.WebSession.Response.ContentType = respone.ContentType;
+
+                var ms = new MemoryStream();
+                var strm = respone.GetResponseStream();
+
+                await strm.CopyToAsync(ms);                
+
+                e.Ok(ms.ToArray());
+            }
+
             if (filterOps.IsMatch(filterOps.GetFilters().ToArray(), uri.AbsoluteUri))
             {
                 //ToDo: implement custom Block Template
@@ -111,12 +137,6 @@ namespace Furesoft.Proxy.Service
                       "<p>Blocked by furesoft web proxy.</p>" +
                       "</body>" +
                       "</html>");
-            }
-
-            // Test Page
-            if(uri.AbsoluteUri.Contains("furesoft.proxy.test"))
-            {
-                e.Ok("<html><h1>Furesoft Proxy Test Page</h1><p>All works fine!</p></html>");
             }
 
             //Redirect example

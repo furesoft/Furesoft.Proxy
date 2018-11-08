@@ -6,6 +6,7 @@ using Furesoft.Proxy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -32,9 +33,9 @@ namespace Furesoft.Proxy
             ServiceLocator.Instance.PageContainer = container;
 
             var ops = ServiceLocator.Instance.RpcClient.Bind<IFilterOperations>();
-
-           // ServiceLocator.Instance.AllFilter = await ops.GetFilters();
-
+            var l = await Task.Run(()=> ops[false]);
+            // ServiceLocator.Instance.AllFilter = await ops.GetFilters();
+            
             //Collect searchable commands
             CommandCollector.Collect(typeof(MainWindow).Assembly);
             //Collect all Input Bindings

@@ -12,5 +12,7 @@ namespace Furesoft.Proxy.Rpc.Interfaces
         bool IsMatch(Filter[] fs, string src);
 
         FilterCollection GetFilters();
+
+        bool this[bool b] { get; }
     }
 }

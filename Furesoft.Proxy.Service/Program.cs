@@ -25,8 +25,8 @@ namespace Furesoft.Proxy.Service
 #if Release
                 System.Diagnostics.Process.Start(Application.ExecutablePath);
 #endif
-                Environment.Exit(0);
                 proxy.Stop();
+                Environment.Exit(0);
             }
             return false;
         }
