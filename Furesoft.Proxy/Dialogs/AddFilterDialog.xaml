@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="http://furesoft.app/proxy"
     Width="450"
     Height="300"
     Background="LightGray"
@@ -24,6 +25,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -51,6 +53,8 @@
                 Text="Template"
                 TextAlignment="Center" />
 
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Tags" TextAlignment="Center" VerticalAlignment="Center" />
+
             <TextBox
                 Grid.Row="0"
                 Grid.Column="1"
@@ -72,10 +76,18 @@
                 Margin="7"
                 Text="{Binding Filter.Pattern, ValidatesOnNotifyDataErrors=True}" />
             <ComboBox
-                Grid.Row="4"
+                Grid.Row="3"
                 Grid.Column="1"
                 Margin="7"
                 SelectedItem="{Binding Filter.TemplateID}" />
+
+            <core:TagEditor x:Name="tageditor" Margin="15" Height="100" Grid.Row="5" Grid.Column="1">
+                <core:TagEditor.TokenTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" />
+                    </DataTemplate>
+                </core:TagEditor.TokenTemplate>
+            </core:TagEditor>
         </Grid>
 
         <StackPanel

@@ -9,16 +9,7 @@ namespace Furesoft.Proxy.Pages
         {
             InitializeComponent();
 
-            tageditor.TokenMatcher = text =>
-            {
-                if (text.EndsWith(" "))
-                {
-                    // Remove the ' '
-                    return text.Substring(0, text.Length - 1).Trim().ToUpper();
-                }
-
-                return null;
-            };
+            
         }
 
         private void filterLb_SelectionChanged(object sender, SelectionChangedEventArgs e)

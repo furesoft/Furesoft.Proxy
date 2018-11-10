@@ -10,6 +10,19 @@ namespace Furesoft.Proxy.Dialogs
             InitializeComponent();
 
             DataContext = new AddFilterDialogViewModel();
+
+            tageditor.TokenMatcher = text =>
+            {
+                if (text.EndsWith(" "))
+                {
+                    // Remove the ' '
+                    return text.Substring(0, text.Length - 1).Trim().ToUpper();
+                }
+
+                return null;
+            };
         }
+
+        
     }
 }

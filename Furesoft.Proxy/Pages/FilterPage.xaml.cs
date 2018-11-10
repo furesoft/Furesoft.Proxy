@@ -21,6 +21,17 @@ namespace Furesoft.Proxy.Pages
 
             ServiceLocator.Instance.AllFilter = new FilterCollection(filterLb);
             ServiceLocator.Instance.AllFilter.AddRange(await Task.Run(()=> ops.GetFilters()));
+
+            tageditor.TokenMatcher = text =>
+            {
+                if (text.EndsWith(" "))
+                {
+                    // Remove the ' '
+                    return text.Substring(0, text.Length - 1).Trim().ToUpper();
+                }
+
+                return null;
+            };
         }
 
         private void filterLb_SelectionChanged(object sender, SelectionChangedEventArgs e)

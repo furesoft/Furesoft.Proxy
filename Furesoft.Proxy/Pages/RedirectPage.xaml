@@ -81,13 +81,7 @@
                 VerticalAlignment="Center"
                 SelectionChanged="filterLb_SelectionChanged" />
 
-            <core:TagEditor x:Name="tageditor" Height="100">
-                <core:TagEditor.TokenTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding}" />
-                    </DataTemplate>
-                </core:TagEditor.TokenTemplate>
-            </core:TagEditor>
+
 
         </StackPanel>
 

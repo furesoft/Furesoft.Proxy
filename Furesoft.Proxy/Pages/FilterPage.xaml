@@ -74,6 +74,13 @@
                 </Button>
             </StackPanel>
 
+            <core:TagEditor x:Name="tageditor" Height="100">
+                <core:TagEditor.TokenTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" />
+                    </DataTemplate>
+                </core:TagEditor.TokenTemplate>
+            </core:TagEditor>
             <ListBox
                 x:Name="filterLb"
                 Width="500"
