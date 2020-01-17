@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Furesoft_Proxy_Service</RootNamespace>
+    <RootNamespace>Furesoft.Proxy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
