@@ -7,7 +7,7 @@ using Titanium.Web.Proxy.Http;
 using Titanium.Web.Proxy.Models;
 using Topshelf;
 
-namespace Furesoft_Proxy_Service
+namespace Furesoft.Proxy
 {
     public class ProxyService : ServiceControl
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Topshelf;
 
-namespace Furesoft_Proxy_Service
+namespace Furesoft.Proxy
 {
     internal class Program
     {
