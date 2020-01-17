@@ -1,0 +1,8 @@
+﻿@namespace Furesoft.Proxy.Language
+@classname BlockQueryGrammar
+@using Loyc;
+@using Loyc.Syntax;
+
+@start CompilationUnit
+
+CompilationUnit<LNode> = "hello" {SyntaxNode.CreateID("world")}

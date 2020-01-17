@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LanguageGrammar.peg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Loyc.Syntax" Version="26.8.5" />
+    <PackageReference Include="Pegasus" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PegGrammar Include="LanguageGrammar.peg" />
+  </ItemGroup>
+
+</Project>
