@@ -47,11 +47,5 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectFilter.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Furesoft.Proxy.Core\Furesoft.Proxy.Core.csproj">
-      <Project>{04D5D52D-38F4-4BA3-9E62-6E0E577DFDF8}</Project>
-      <Name>Furesoft.Proxy.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
