@@ -12,9 +12,12 @@ A Usefull Proxy for Parent Control.
 
 ## Query Language Example
 
+```
 block domain google.* display "Google is prohibited" and
       keyword "porn" redirect "http://wikipedia.org" and
        keywords "hello", "world" display error
 
 log usagetime to "user.txt"
+
+```
 
