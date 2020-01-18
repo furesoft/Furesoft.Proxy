@@ -9,7 +9,7 @@ namespace QueryTest
         public void ContentParseTest()
         {
             var result = QueryEvaluator.ParseQuery("content on \"mysite.domain\" display \"<h1> my own site</h1>\"");
-            result?.DoBlock(null);
+            QueryEvaluator.DoBlock(result, null);
 
             Assert.Pass();
         }
