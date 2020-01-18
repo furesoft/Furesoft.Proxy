@@ -9,6 +9,9 @@ namespace Furesoft.Proxy.Query
             var parser = new BlockQueryGrammar();
             var ast = parser.Parse(src);
 
+            var res = new QueryEvaluationResult();
+            res.
+
             return null;
         }
     }

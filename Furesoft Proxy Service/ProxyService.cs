@@ -68,6 +68,9 @@ namespace Furesoft.Proxy
 
             var uri = e.HttpClient.Request.RequestUri;
 
+            var result = Query.QueryEvaluator.ParseQuery("content on \"mysite.domain\" display \"<h1> my own site</h1>\"");
+            result?.DoBlock(e.HttpClient);
+
             // Test Page
             if (uri.AbsoluteUri.Contains("furesoft.proxy.test"))
             {
