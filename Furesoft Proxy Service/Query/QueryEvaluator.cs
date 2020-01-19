@@ -13,12 +13,16 @@ namespace Furesoft.Proxy.Query
             if (result.Name.Name == "Content")
             {
                 var host = result.Args[0].Args[0].Value;
-                var content = result.Args[1].Args[0].Value;
+                var type = result.Args[1].Name;
+                var content = result.Args[2].Args[0].Value;
                 var uri = e?.HttpClient.Request.RequestUri;
 
-                if (uri?.Host == host.ToString())
+                if (type.Name == "display")
                 {
-                    e?.Ok(content.ToString());
+                    if (uri?.Host == host.ToString())
+                    {
+                        e?.Ok(content.ToString());
+                    }
                 }
             }
         }
