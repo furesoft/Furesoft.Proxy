@@ -18,7 +18,8 @@ block domain google.* display "Google is prohibited" and
        keywords "hello", "world" display error
 
 log usagetime to "user.txt"
-content on "mysite.domain" display "<h1>my own site</h1>"
+content on "mysite.domain.test" display "<h1>my own site</h1>"
+content on "google.furesoft.ml" from "google.com"
 
 ```
 
