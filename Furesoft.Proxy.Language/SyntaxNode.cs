@@ -45,9 +45,9 @@ namespace Furesoft.Proxy.Language
             return F.Braces(F.List(body)).SetStyle(NodeStyle.Statement);
         }
 
-        public static LNode CreateContentCommand(LNode cond, LNode arg)
+        public static LNode CreateContentCommand(LNode cond, LNode type, LNode arg)
         {
-            return F.Call("Content", cond, arg);
+            return F.Call("Content", cond, type, arg);
         }
 
         public static LNode CreateID(string src)

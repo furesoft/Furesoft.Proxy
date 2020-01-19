@@ -5,8 +5,8 @@
 
 @start contentCommand
 
-contentCommand<LNode> = "content on" _ cond:stringLiteral _ "display" _ arg:stringLiteral
-							{ SyntaxNode.CreateContentCommand(cond, arg) }
+contentCommand<LNode> = "content on" _ cond:stringLiteral _ argType:identifier _ arg:stringLiteral
+							{ SyntaxNode.CreateContentCommand(cond, argType, arg) }
 
 identifier<LNode> -public -memoize = id:("" ([a-zA-Z_][a-zA-Z_0-9]*)) {SyntaxNode.CreateID(id)}
 stringLiteral<LNode> = '"' val:("" simpleDoubleQuotedCharacter*) '"' {SyntaxNode.CreateString(val)}
