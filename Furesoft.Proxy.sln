@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furesoft Proxy Service", "Furesoft Proxy Service\Furesoft Proxy Service.csproj", "{C0D54F36-0B22-4615-B519-F1F4EAA46202}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyManager", "ProxyManager\ProxyManager.csproj", "{18BFB5EE-9B76-44B5-9314-279EC0DD356E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furesoft.Proxy.Language", "Furesoft.Proxy.Language\Furesoft.Proxy.Language.csproj", "{7585F3F7-988D-4720-8CA8-A7A9632A1858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryTest", "QueryTest\QueryTest.csproj", "{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryTest", "QueryTest\QueryTest.csproj", "{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{C0D54F36-0B22-4615-B519-F1F4EAA46202}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D54F36-0B22-4615-B519-F1F4EAA46202}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D54F36-0B22-4615-B519-F1F4EAA46202}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18BFB5EE-9B76-44B5-9314-279EC0DD356E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18BFB5EE-9B76-44B5-9314-279EC0DD356E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18BFB5EE-9B76-44B5-9314-279EC0DD356E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18BFB5EE-9B76-44B5-9314-279EC0DD356E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7585F3F7-988D-4720-8CA8-A7A9632A1858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7585F3F7-988D-4720-8CA8-A7A9632A1858}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7585F3F7-988D-4720-8CA8-A7A9632A1858}.Release|Any CPU.ActiveCfg = Release|Any CPU
