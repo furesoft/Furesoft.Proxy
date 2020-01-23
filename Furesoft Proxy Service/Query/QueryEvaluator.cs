@@ -8,7 +8,7 @@ namespace Furesoft.Proxy.Query
 {
     public static class QueryEvaluator
     {
-        public static void DoBlock(LNode result, SessionEventArgs e)
+        public static bool DoBlock(LNode result, SessionEventArgs e)
         {
             if (result.Name.Name == "Content")
             {
@@ -22,9 +22,13 @@ namespace Furesoft.Proxy.Query
                     if (uri?.Host == host.ToString())
                     {
                         e?.Ok(content.ToString());
+
+                        return true;
                     }
                 }
             }
+
+            return false;
         }
 
         public static LNode ParseQuery(string src)

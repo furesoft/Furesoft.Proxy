@@ -73,7 +73,9 @@ namespace Furesoft.Proxy
             {
                 var result = Query.QueryEvaluator.ParseQuery(q);
 
-                Query.QueryEvaluator.DoBlock(result, e);
+                var isBlocked = Query.QueryEvaluator.DoBlock(result, e);
+
+                if (isBlocked) break;
             }
 
             // Test Page
