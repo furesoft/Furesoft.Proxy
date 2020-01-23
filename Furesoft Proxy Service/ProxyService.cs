@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using DiscUtils.Registry;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Titanium.Web.Proxy;
@@ -67,9 +68,13 @@ namespace Furesoft.Proxy
             }
 
             var uri = e.HttpClient.Request.RequestUri;
-            var result = Query.QueryEvaluator.ParseQuery("content on \"furesoft.proxy\" display \"<h1> my own site 2</h1>\"");
 
-            Query.QueryEvaluator.DoBlock(result, e);
+            foreach (var q in Config.GetAllQuerys())
+            {
+                var result = Query.QueryEvaluator.ParseQuery(q);
+
+                Query.QueryEvaluator.DoBlock(result, e);
+            }
 
             // Test Page
             if (uri.AbsoluteUri.Contains("furesoft.proxy.test"))
@@ -118,6 +123,7 @@ namespace Furesoft.Proxy
         {
             proxyServer = new ProxyServer();
 
+            Config.Init();
             //proxyServer.CertificateManager.TrustRootCertificate(true);
 
             proxyServer.BeforeRequest += OnRequest;
