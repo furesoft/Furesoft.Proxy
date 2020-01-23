@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Furesoft.Signals" Version="1.0.8" />
-    <PackageReference Include="LiteDB" Version="4.1.4" />
+    <PackageReference Include="LiteDB" Version="5.0.0-rc" />
     <PackageReference Include="Loyc.Syntax" Version="26.8.5" />
     <PackageReference Include="Quamotion.DiscUtils.Registry" Version="0.15.4" />
-    <PackageReference Include="Titanium.Web.Proxy" Version="3.1.1276" />
-    <PackageReference Include="Topshelf" Version="4.2.1" />
+    <PackageReference Include="Titanium.Web.Proxy" Version="3.1.1280-beta" />
+    <PackageReference Include="Topshelf" Version="4.2.1.218-develop" />
   </ItemGroup>
 
   <ItemGroup>
