@@ -23,3 +23,13 @@ content on "google.furesoft.ml" from "google.com"
 
 ```
 
+## Scripting (JavaScript)
+```
+enable script "blockImages" start
+
+	function onRequest(req, resp) {
+		// do blocking
+	}
+
+end
+```
