@@ -7,6 +7,10 @@
 
 contentCommand<LNode> = "content on" _ cond:stringLiteral _ argType:identifier _ arg:stringLiteral
 							{ SyntaxNode.CreateContentCommand(cond, argType, arg) }
+scriptCommand<LNode> = opt:option _ "script" _ name:stringLiteral _ "start" _? content:("" .*) "end"
+						{SyntaxNode.CreateScriptCmd(opt, name, content)}
+
+option<LNode> = "enable" {SyntaxNode.CreateOption(true)} / "disable" {SyntaxNode.CreateOption(false)}
 
 identifier<LNode> -public -memoize = id:("" ([a-zA-Z_][a-zA-Z_0-9]*)) {SyntaxNode.CreateID(id)}
 stringLiteral<LNode> = '"' val:("" simpleDoubleQuotedCharacter*) '"' {SyntaxNode.CreateString(val)}

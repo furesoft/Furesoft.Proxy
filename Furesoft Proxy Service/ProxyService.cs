@@ -1,4 +1,4 @@
-﻿using DiscUtils.Registry;
+﻿using Furesoft.Signals;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -124,6 +124,9 @@ namespace Furesoft.Proxy
         public bool Start(HostControl hostControl)
         {
             proxyServer = new ProxyServer();
+
+            var channel = Signal.CreateRecieverChannel("FuresoftProxy");
+            Signal.CollectAllShared(channel);
 
             Config.Init();
             //proxyServer.CertificateManager.TrustRootCertificate(true);

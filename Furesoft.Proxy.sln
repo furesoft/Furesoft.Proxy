@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furesoft.Proxy.Language", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryTest", "QueryTest\QueryTest.csproj", "{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestConsole", "ApiTestConsole\ApiTestConsole.csproj", "{4E4E4D43-4545-4F39-BE6B-93D19853DFCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BAC8CD3-F6E5-437B-84A6-74BB1D269803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4E4D43-4545-4F39-BE6B-93D19853DFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4E4D43-4545-4F39-BE6B-93D19853DFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4E4D43-4545-4F39-BE6B-93D19853DFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4E4D43-4545-4F39-BE6B-93D19853DFCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

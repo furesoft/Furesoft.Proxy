@@ -55,6 +55,16 @@ namespace Furesoft.Proxy.Language
             return F.Id(src);
         }
 
+        public static LNode CreateOption(bool value)
+        {
+            return F.Literal(value);
+        }
+
+        public static LNode CreateScriptCmd(LNode option, LNode name, string content)
+        {
+            return F.Fn(option, name, null, F.Literal(content));
+        }
+
         public static LNode CreateString(string value)
         {
             return F.String.WithArgs(F.Literal(value));

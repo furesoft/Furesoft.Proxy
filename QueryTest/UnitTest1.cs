@@ -14,6 +14,14 @@ namespace QueryTest
             Assert.Pass();
         }
 
+        [Test]
+        public void ScriptParseTest()
+        {
+            var result = new Furesoft.Proxy.Language.BlockQueryGrammar().Parse("enable script \"blockImages\" start function onRequest() {} end");
+
+            Assert.Pass();
+        }
+
         [SetUp]
         public void Setup()
         {
