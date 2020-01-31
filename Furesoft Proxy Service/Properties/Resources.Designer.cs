@@ -59,16 +59,5 @@ namespace Furesoft.Proxy.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die type Query {
-        ///              hello: String
-        ///} ähnelt.
-        /// </summary>
-        internal static string QueryDefinition {
-            get {
-                return ResourceManager.GetString("QueryDefinition", resourceCulture);
-            }
-        }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using GraphQL;
+using GraphQL.Types;
 
 namespace Furesoft.Proxy
 {
-    public class QueryDefinition
+    public class QueryDefinition : ObjectGraphType
     {
-        [GraphQLMetadata("hello")]
-        public string GetHello()
+        public QueryDefinition()
         {
-            return "Hello Query class";
+            Field<StringGraphType>("hello", resolve: _ => "hello world");
         }
     }
 }

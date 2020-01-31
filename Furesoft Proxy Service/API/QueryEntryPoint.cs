@@ -11,8 +11,7 @@ namespace Furesoft.Proxy.API
         [SharedFunction(0x6A3B)]
         public static string Execute(string query)
         {
-            var schema = Schema.For(Resources.QueryDefinition);
-
+            var schema = new Schema { Query = new QueryDefinition(), Mutation = new MutationDefinition() };
             var json = schema.ExecuteAsync(_ =>
             {
                 _.Query = query;
