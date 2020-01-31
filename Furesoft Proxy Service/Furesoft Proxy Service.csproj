@@ -7,11 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Furesoft.Signals" Version="1.0.8" />
+    <PackageReference Include="Furesoft.Signals" Version="1.0.9" />
     <PackageReference Include="GraphQL" Version="3.0.0-preview-1352" />
-    <PackageReference Include="LiteDB" Version="5.0.0-rc" />
+    <PackageReference Include="LiteDB" Version="5.0.0" />
     <PackageReference Include="Loyc.Syntax" Version="26.8.5" />
-    <PackageReference Include="NiL.JS" Version="2.5.1403" />
     <PackageReference Include="Quamotion.DiscUtils.Registry" Version="0.15.4" />
     <PackageReference Include="Titanium.Web.Proxy" Version="3.1.1280-beta" />
     <PackageReference Include="Topshelf" Version="4.2.1.218-develop" />

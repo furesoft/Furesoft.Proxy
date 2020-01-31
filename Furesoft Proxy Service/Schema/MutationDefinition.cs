@@ -1,6 +1,6 @@
 ﻿using GraphQL.Types;
 
-namespace Furesoft.Proxy.Schema
+namespace Furesoft.Proxy
 {
     public class MutationDefinition : ObjectGraphType
     {
